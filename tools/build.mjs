@@ -139,7 +139,7 @@ function footer(root) {
 <span class="ft-l">
 <a href="https://www.instagram.com/${esc(SITE.instagram)}/" target="_blank" rel="noopener">Instagram</a>
 <a href="${root}contact/" data-en="Contact">連絡先</a>
-<a href="${esc(SITE.sister.url)}"><span data-en="Sister site">姉妹サイト</span>　${esc(SITE.sister.name)} ↗</a>
+<a href="${esc(SITE.sister.url)}">${esc(SITE.sister.name)} ↗</a>
 </span>
 </footer>
 </div>
@@ -323,7 +323,6 @@ ${SITE.tagline ? `<p class="ab-t" data-en="${en(SITE.taglineEn, SITE.tagline)}">
 <a class="btn-o" href="../works/" data-en="Read the works">作品を読む</a>
 </div>
 <div class="sister">
-<span class="lb" data-en="Sister site">姉妹サイト</span>
 <a href="${esc(SITE.sister.url)}">${esc(SITE.sister.name)} ↗</a>
 </div>
 </section>`;
