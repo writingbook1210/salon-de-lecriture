@@ -23,6 +23,11 @@ html:not([lang="en"]) .en-only{display:none!important}
 .nav a:hover,.nav a[aria-current="page"]{text-decoration:underline}
 .nav .cta{margin-left:auto;min-height:40px;padding:0 18px;background:var(--ink);color:#fff}
 .nav .cta:hover{text-decoration:none;background:#333}
+/* 「連絡先」と申込ボタンのあいだを空ける。
+   スマホ幅でボタンが次の行に回るときは上下に12px、PC幅で横に並ぶときは最低40px。 */
+.nav{row-gap:12px}
+@media (max-width:640px){.nav{padding-bottom:12px}}
+@media (min-width:641px){.nav a:nth-last-child(2){margin-right:18px}}
 
 /* 共通の部品 */
 .h1{margin:36px 0 24px;font-size:22px;font-weight:500;letter-spacing:.14em}
