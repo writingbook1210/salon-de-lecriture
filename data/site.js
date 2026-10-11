@@ -16,7 +16,9 @@ var SITE = {
 
   intro: `当サロンは、読書会や合評会にとどまらず、ZINEとしての合同誌を刊行するために設立した団体です。対面で集まる会のほか、このウェブサイトでも参加者の小説・評論・エッセイを公開しています。観たもの、聴いたもの、さらには感じたこと、思ったことを活字に落とし込み、文学のみならず芸術や学術にまで足を延ばして活動しています。
 
-「サロン」と聞くと誰かを中心とした活動や、誰かを支持するような、堅苦しく一方通行的な活動だと感じてしまう方も多いと思います。しかし、サロンとは邸宅における「客間」「応接間」「談話室」といった大きな部屋を指す言葉です。サロンはもっと軽やかで、賑わいのあるものであるべきではないでしょうか。
+「サロン」と聞くと誰かを中心とした活動や、誰かを支持するような、堅苦しく一方通行的な活動だと感じてしまう方も多いと思います。しかしサロンという語句のルーツを辿ると、邸宅における「客間」「談話室」といった大きな部屋を指す言葉になります。
+
+そして、それは共通の話題や興味について話す場でもありました。この事から、知的でありながらも格式張らず、お互いの知見や意見を交換する場であったとも言えるはずです。だとすれば、サロンはもっと軽やかで、賑わいのあるものであるべきではないでしょうか。
 
 また昨今では、noteやX、Threadsなど、自身の意見や論考を載せられる媒体が増え、表現の自由さや多様さは拡大の一途をたどっています。この現象自体はかなり喜ばしいことなのですが、「いいね」などの興味関心に促され、優先的に表示されていくものが増えているような気がしてなりません。
 
@@ -29,7 +31,9 @@ var SITE = {
 その信念を忘れないために、このサロンを使っていただけましたら、大変ありがたく思います。`,
   introEn: `Salon de l'écriture is a group founded not only to hold reading groups and critique sessions, but also to publish a collective anthology in the form of a zine. Alongside our in-person gatherings, we share our members' fiction, criticism and essays on this website. We put into words what we have seen and heard, and even what we have felt and thought, and our activities reach beyond literature into the arts and scholarship.
 
-In Japan, many people hear the word "salon" and picture something stiff and one-directional: a circle built around one person, or a gathering of followers. Yet the word originally refers to a large room in a grand house, such as a drawing room, a reception room or a parlor. Shouldn't a salon be something lighter and livelier?
+In Japan, many people hear the word "salon" and picture something stiff and one-directional: a circle built around one person, or a gathering of followers. Yet if we trace the word back to its roots, it refers to a large room in a grand house, such as a drawing room or a parlor.
+
+It was also a place where people talked about shared topics and interests. We can say, then, that it was a space for exchanging knowledge and opinions, intellectual yet unceremonious. If so, shouldn't a salon be something lighter and livelier?
 
 These days, platforms such as note, X and Threads let anyone publish their opinions and essays, and the freedom and variety of expression keep growing. That in itself is very welcome. Still, I can't shake the feeling that what gets shown first is increasingly what is driven by "likes" and other signs of attention.
 
