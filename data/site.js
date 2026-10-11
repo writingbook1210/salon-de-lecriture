@@ -42,7 +42,8 @@ Finally: not being swept along by others, not being shaken by anyone’s judgmen
 I would be truly grateful if you would use this salon to keep hold of that conviction.`,
 
   signature: "Salon de l'écriture　主宰　及川渉",
-  signatureEn: 'Wataru Oikawa, organizer of Salon de l’écriture',
+  // 改行するときは「Salon de l’écriture」と「Wataru Oikawa, Organizer」のあいだでだけ折れるようにしている（  は折れない空白）
+  signatureEn: 'Salon de l’écriture　Wataru Oikawa, Organizer',
 
   mail: 'writing.book1210@gmail.com',
   instagram: 'salon.de.lecriture',
