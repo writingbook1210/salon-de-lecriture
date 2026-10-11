@@ -315,13 +315,16 @@ function aboutPage() {
     const b = String(enText || '').split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
     return a.map((p, i) => `<p class="ab-p" data-en="${en(b[i], p)}">${esc(p)}</p>`).join('\n');
   };
+  // 見出し・本文・署名・ボタンは、ヘッダーの横線の中央にそろえた1つの柱（ab-col）に入れる
   const main = `<section>
+<div class="ab-col">
 <h1 class="h1" data-en="About the salon">このサロンについて</h1>
 ${SITE.tagline ? `<p class="ab-t" data-en="${en(SITE.taglineEn, SITE.tagline)}">${esc(SITE.tagline)}</p>\n` : ''}${paras(SITE.intro, SITE.introEn)}
 ${SITE.signature ? `<p class="ab-sig" data-en="${en(SITE.signatureEn, SITE.signature)}">${esc(SITE.signature)}</p>` : ''}
 <div class="btns">
 <a class="btn js-cta" href="../news/" data-en="Join the next salon">次回の会に申し込む</a>
 <a class="btn-o" href="../works/" data-en="Read the works">作品を読む</a>
+</div>
 </div>
 <div class="sister">
 <a href="${esc(SITE.sister.url)}">${esc(SITE.sister.name)} ↗</a>
