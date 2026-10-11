@@ -27,23 +27,23 @@ var SITE = {
 最後になりますが、誰かに流されず、誰かからの評価をものともせず、それでも自身の作品を信じ切るというのは、とても苦しく、大変なことだと思います。それでも、この心意気を忘れてしまっては、なぜ書いているのか、何のために書くに至ったのか、我々はなぜ書かなければならなかったのか、なぜ書いていたのかが、わからなくなってしまうのではないでしょうか。
 
 その信念を忘れないために、このサロンを使っていただけましたら、大変ありがたく思います。`,
-  introEn: `Salon de l’écriture is a group founded not only to hold reading groups and critique sessions, but to publish a collective anthology in the form of a zine. Alongside our in-person gatherings, we share our members’ fiction, criticism and essays on this website. We put into print what we have seen and heard, and even what we have felt and thought, and our activities reach beyond literature into the arts and scholarship.
+  introEn: `Salon de l'écriture is a group founded not only to hold reading groups and critique sessions, but also to publish a collective anthology in the form of a zine. Alongside our in-person gatherings, we share our members' fiction, criticism and essays on this website. We put into words what we have seen and heard, and even what we have felt and thought, and our activities reach beyond literature into the arts and scholarship.
 
-When they hear the word “salon,” many people may picture something stiff and one-directional: a circle built around one person, or a gathering of followers. Yet a salon is simply a large room in a house, a drawing room, a reception room, a room for conversation. Shouldn’t a salon be something lighter and livelier than that?
+In Japan, many people hear the word "salon" and picture something stiff and one-directional: a circle built around one person, or a gathering of followers. Yet the word originally refers to a large room in a grand house, such as a drawing room, a reception room or a parlor. Shouldn't a salon be something lighter and livelier?
 
-These days, platforms such as note, X and Threads let anyone publish their opinions and essays, and the freedom and variety of expression keep growing. That in itself is very welcome. Still, I can’t shake the feeling that what gets shown first is increasingly what is driven by “likes” and other signs of attention.
+These days, platforms such as note, X and Threads let anyone publish their opinions and essays, and the freedom and variety of expression keep growing. That in itself is very welcome. Still, I can't shake the feeling that what gets shown first is increasingly what is driven by "likes" and other signs of attention.
 
-I believe that for those of us who write, the act of writing alone should be enough for our work to be recognized as our own creation.
+I believe that for those of us who write, the act of writing should in itself be recognized as creation.
 
-To become the object of someone else’s judgment takes great courage. To throw that chance away carelessly would, I think, be the same as discarding a precious experience. Even so, I wanted first to face our own work head-on, and to create a place where it can be shared with others before any judgment is made. That is why I founded Salon de l’écriture.
+To become the object of someone else's judgment takes great courage. To throw that chance away carelessly would, I think, be the same as discarding a precious experience. Even so, I wanted to create a place where we can first face our own work head-on and share it with others before any judgment is made. That is why I founded Salon de l'écriture.
 
-Finally: not being swept along by others, not being shaken by anyone’s judgment, and still believing fully in your own work is, I think, painful and hard. Yet if we lose that spirit, won’t we lose sight of why we are writing, what led us to write, why we had to write, and why we were writing at all?
+In closing, I think it is painful and hard to resist being swept along by others, to remain unshaken by anyone's judgment, and still to believe fully in your own work. Yet if we lose that spirit, won't we lose sight of why we are writing, what we set out to write for, why we had to write, and why we were writing at all?
 
 I would be truly grateful if you would use this salon to keep hold of that conviction.`,
 
   signature: "Salon de l'écriture　主宰　及川渉",
-  // 改行するときは「Salon de l’écriture」と「Wataru Oikawa, Organizer」のあいだでだけ折れるようにしている（  は折れない空白）
-  signatureEn: 'Salon de l’écriture　Wataru Oikawa, Organizer',
+  // 英語の署名は2行（\n で改行）
+  signatureEn: "Wataru Oikawa, Organizer\nSalon de l'écriture",
 
   mail: 'writing.book1210@gmail.com',
   instagram: 'salon.de.lecriture',
