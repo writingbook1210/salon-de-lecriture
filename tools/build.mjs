@@ -318,6 +318,7 @@ function aboutPage() {
   const main = `<section>
 <h1 class="h1" data-en="About the salon">このサロンについて</h1>
 ${SITE.tagline ? `<p class="ab-t" data-en="${en(SITE.taglineEn, SITE.tagline)}">${esc(SITE.tagline)}</p>\n` : ''}${paras(SITE.intro, SITE.introEn)}
+${SITE.signature ? `<p class="ab-sig" data-en="${en(SITE.signatureEn, SITE.signature)}">${esc(SITE.signature)}</p>` : ''}
 <div class="btns">
 <a class="btn js-cta" href="../news/" data-en="Join the next salon">次回の会に申し込む</a>
 <a class="btn-o" href="../works/" data-en="Read the works">作品を読む</a>
@@ -328,7 +329,7 @@ ${SITE.tagline ? `<p class="ab-t" data-en="${en(SITE.taglineEn, SITE.tagline)}">
 </section>`;
   page({
     file: 'about/index.html', root: '../', cur: 'about', title: T('このサロンについて'), titleEn: T('About'),
-    desc: SITE.description, url: abs('about/'), main
+    desc: String(SITE.intro || '').split(/\n\s*\n/)[0].trim() || SITE.description, url: abs('about/'), main
   });
 }
 
