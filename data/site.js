@@ -51,5 +51,5 @@ I would be truly grateful if you would use this salon to keep hold of that convi
 
   mail: 'writing.book1210@gmail.com',
   instagram: 'salon.de.lecriture',
-  sister: { name: 'Organizer page', url: 'https://writingbook1210.github.io/' }  // 主宰のページ（writing book）へのリンク
+  sister: { name: 'Organizer’s website', url: 'https://writingbook1210.github.io/' }  // 主宰のページ（writing book）へのリンク
 };
