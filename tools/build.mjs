@@ -27,6 +27,7 @@ function loadVar(file, name) {
 
 const SITE = loadVar('data/site.js', 'SITE');
 const WORKS = loadVar('data/works.js', 'WORKS');
+const WRITERS = (() => { try { return loadVar('data/works.js', 'WRITERS') || []; } catch (e) { return []; } })();
 
 let ver = parseInt(rd('VERSION').trim(), 10) || 1;
 if (!process.argv.includes('--keep')) {
@@ -210,7 +211,8 @@ ${cards}
 /* ---------- 作品一覧 ---------- */
 function worksIndex() {
   const root = '../';
-  const authors = [];
+  // 書き手の選択肢：data/works.js の WRITERS の順に並べ、作品にしか出てこない筆名があれば後ろに足す
+  const authors = WRITERS.map((x) => ({ ja: x.name, en: x.nameEn || x.name }));
   works.forEach((w) => { if (!authors.find((a) => a.ja === w.author)) authors.push({ ja: w.author, en: w.authorEn || w.author }); });
   const rows = works.map((w, i) => `<a class="row" href="${w.id}.html" data-genre="${esc(w.genre)}" data-author="${esc(w.author)}" data-date="${dnum(w.date)}">
 <span class="no">${String(i + 1).padStart(2, '0')}</span>

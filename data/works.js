@@ -11,6 +11,13 @@
      body     : 本文をそのまま書く。改行は \n、空行は \n\n。原文のとおりに組みます（自動の字下げはしません）
      bodyFile : 図や注のある作品は、本文を data/bodies/ にHTMLで置き、その場所を書く
    原文は直さずに載せます。 */
+/* 書き手の一覧です。作品がまだない書き手も、ここに書けば作品一覧の「書き手」の選択肢に出ます。
+   name : 筆名（作品の author と同じ書き方にする）　　nameEn : 英語表示のときの名前（確認を取ってから入れる） */
+var WRITERS = [
+  { name: '及川 渉', nameEn: 'Wataru Oikawa' },
+  { name: 'たしろだいき', nameEn: 'Daiki Tashiro' }
+];
+
 var WORKS = [
 {
   id: 'taiji',
