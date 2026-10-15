@@ -24,8 +24,9 @@ FONTS = CACHE / 'fonts' / 'node_modules' / '@fontsource'
 BASE = '/salon-de-lecriture/'
 PORT = 8765
 
-PAGES = ['', 'works/', 'works/taiji.html', 'works/attention.html', 'works/kodomo.html', 'works/her.html',
-         'news/', 'about/', 'contact/']
+# 作品ページは works/ にあるものを全部たどる
+PAGES = ['', 'works/'] + [f'works/{p.name}' for p in sorted((ROOT / 'works').glob('*.html')) if p.name != 'index.html'] + \
+        ['news/', 'about/', 'contact/']
 WIDTHS = {'pc': 1280, 'sp': 390}
 
 COUNT_JS = """
@@ -80,7 +81,7 @@ def main():
     origin = f'http://127.0.0.1:{PORT}'
     font_css = ''.join(f'@import url({origin}/_fonts/{f});' for f in [
         'shippori-mincho/400.css', 'shippori-mincho/500.css', 'cormorant-garamond/400.css',
-        'cormorant-garamond/500.css', 'cormorant-garamond/400-italic.css'])
+        'cormorant-garamond/500.css', 'cormorant-garamond/600.css', 'cormorant-garamond/400-italic.css'])
     problems, report = [], []
     shot_dir = CACHE / 'shots'
     if shots:
@@ -110,7 +111,17 @@ def main():
                         problems.append(f'{tag}: 横に {over}px はみ出しています')
                     if page.evaluate('document.documentElement.lang') != lang:
                         problems.append(f'{tag}: 言語が切り替わっていません')
-                    if path.startswith('works/') and path.endswith('.html'):
+                    if path.startswith('works/') and path.endswith('.html') and not page.query_selector('#m-v'):
+                        # 英語などの作品：切り替えはなく、保存された向きが「縦」でも横書きのままか確かめる
+                        page.evaluate("localStorage.setItem('salon-mode-prose','v');localStorage.setItem('salon-mode-novel','v')")
+                        page.reload(); page.evaluate('document.fonts.ready'); page.wait_for_timeout(250)
+                        if page.evaluate("getComputedStyle(document.getElementById('bd')).writingMode").startswith('vertical'):
+                            problems.append(f'{tag}: 横書きだけの作品が縦書きになっています')
+                        page.evaluate("localStorage.removeItem('salon-mode-novel');localStorage.removeItem('salon-mode-prose')")
+                        report.append(f'{tag}: 横書きのみ（切り替えなし）')
+                        if shots:
+                            page.screenshot(path=str(shot_dir / f'{lang}-{wname}-{path.replace("/", "_")}.png'), full_page=True)
+                    elif path.startswith('works/') and path.endswith('.html'):
                         for mode in ['v', 'h']:
                             page.click(f'#m-{mode}')
                             page.wait_for_timeout(100)

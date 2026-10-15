@@ -272,7 +272,7 @@
   /* ---------- 作品ページの縦書き／横書き ---------- */
   function initReader() {
     var bd = doc.getElementById('bd');
-    if (!bd) return;
+    if (!bd || bd.hasAttribute('data-fixed')) return;   // 英語などの作品は横書きのまま
     var group = bd.getAttribute('data-genre') === '小説' ? 'novel' : 'prose';
     var key = 'salon-mode-' + group;
     var fallback = group === 'novel' ? 'v' : 'h';

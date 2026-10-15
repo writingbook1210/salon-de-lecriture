@@ -10,6 +10,7 @@
    本文は次のどちらか：
      body     : 本文をそのまま書く。改行は \n、空行は \n\n。原文のとおりに組みます（自動の字下げはしません）
      bodyFile : 図や注のある作品は、本文を data/bodies/ にHTMLで置き、その場所を書く
+   lang     : 本文が日本語以外のときだけ書く（例: 'en'）。横書きだけになり、日本語表示では「この作品は英語で書かれています。」と添える
    原文は直さずに載せます。 */
 /* 書き手の一覧です。作品がまだない書き手も、ここに書けば作品一覧の「書き手」の選択肢に出ます。
    name : 筆名（作品の author と同じ書き方にする）　　nameEn : 英語表示のときの名前（確認を取ってから入れる） */
@@ -46,5 +47,25 @@ var WORKS = [
   genre: '評論', date: '2026/9/29', status: '全文公開',
   titleEn: 'Who Gets to Decide That Someone Is “Loved”?', subEn: 'Mami Hanakawa and Yū Motomi in Tomoko Yamashita’s HER, CASE.5', authorEn: 'Wataru Oikawa',
   bodyFile: 'data/bodies/her.html'
+},
+{
+  id: 'photography',
+  title: 'The ‘Fluid Nature’ of Photography in the Digital and Social Media Age',
+  sub: 'How has Photography Evolved from a ‘Technology for Preservation’ to ‘Content for Consumption’?',
+  author: 'たしろだいき',
+  genre: '評論', date: '2026/10/14', status: '全文公開',   // 原稿の題名をコロンの所で題名と副題に分けた（承認済み）
+  lang: 'en',
+  titleEn: 'The ‘Fluid Nature’ of Photography in the Digital and Social Media Age',
+  subEn: 'How has Photography Evolved from a ‘Technology for Preservation’ to ‘Content for Consumption’?',
+  authorEn: 'Daiki Tashiro',
+  bodyFile: 'data/bodies/photography.html'
+},
+{
+  id: 'boxman',
+  title: 'The Box Man', sub: '', author: 'たしろだいき',
+  genre: '小説', date: '2026/10/14', status: '全文公開',   // 英語の作品なので縦書きにはならない
+  lang: 'en',
+  titleEn: 'The Box Man', subEn: '', authorEn: 'Daiki Tashiro',
+  bodyFile: 'data/bodies/boxman.html'
 }
 ];

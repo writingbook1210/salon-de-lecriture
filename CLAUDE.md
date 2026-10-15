@@ -35,6 +35,8 @@
 1. `data/works.js` に `{ … }` を1つ足す（id は英数字、genre は 小説／評論／エッセイ、date は 'YYYY/M/D'）。
    - 短い本文は `body`（改行 `\n`、空行 `\n\n`）。図や注があれば `data/bodies/<id>.html` に置いて `bodyFile`。図は `images/<id>/` に置き、HTML からは `images/<id>/figNN.jpg` で参照する。
    - 題名・副題・名前の英訳（titleEn / subEn / authorEn）は下書きして確認を取る。
+   - 英語で書かれた作品は `lang: 'en'` を足す（縦書き・横書きの切り替えは出さず横書きだけ、本文は Cormorant Garamond。日本語表示では「この作品は英語で書かれています。」と添える）。本文の HTML では、空行1つ分のあきは `class="sp"`、2つ分は `sp2`、段落の頭の字下げは `in`、番号つきの見出しは `<h2 class="sh">`、中央の見出しは `<h2 class="ctr">`、文献は `<p class="sp ref">`。本文中の中国語は `lang="zh-Hans"` で囲む（その字だけ中国語の明朝で読み込む）。
+   - 原稿の冒頭にある名前と題名は、ページの見出しに出るので本文には入れない。
 2. `python3 tools/make_images.py <id>` で共有用の画像を作る。
 3. `node tools/build.mjs --keep` → `python3 tools/check.py --shots` で下書きを確かめる（まだ公開しない）。
 4. 運営に「これで公開してよいか」を返す。書き手本人の確認も運営が取る。返すもの：

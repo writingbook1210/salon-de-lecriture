@@ -8,6 +8,7 @@ a{color:inherit}
 img{max-width:100%}
 [hidden]{display:none!important}
 html:not([lang="en"]) .en-only{display:none!important}
+html[lang="en"] .ja-only{display:none!important}
 :focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 .wrap{max-width:880px;margin:0 auto;padding:0 20px 40px}
 
@@ -125,6 +126,26 @@ html:not([lang="en"]) .en-only{display:none!important}
 .bd.v sup,.bd.v .tcy{-webkit-text-combine:horizontal;text-combine-upright:all}
 .bd .fn{margin:0;margin-block-start:2.4em;padding:0;padding-block-start:16px;padding-inline-start:1.8em;border-block-start:.5px solid var(--rule-l);font-size:12px;line-height:1.9;letter-spacing:.04em;color:var(--sub)}
 .bd .fn li{margin-block-end:.6em;overflow-wrap:anywhere}
+/* 英語で書かれた作品：欧文の書体で組み、段落の字下げと空行は原文どおりにする。幅は日本語の本文と同じ */
+.bd.en{width:calc(16px * 34.2);font-family:'Cormorant Garamond','Shippori Mincho',serif;font-size:19px;line-height:1.75;letter-spacing:.01em;text-spacing-trim:normal;hyphens:auto;-webkit-hyphens:auto}
+.bd.en p{margin:0;text-indent:0}
+.bd.en .sp{margin-block-start:1.2em}
+.bd.en .sp2{margin-block-start:2.4em}
+.bd.en .sp4{margin-block-start:4.8em}
+.bd.en p.ctr{text-align:center;text-indent:0}
+/* 段落の頭を下げて組んである原稿（論文の形）。見出しは原稿どおり太字で左に寄せる */
+.bd.en p.in{text-indent:2em}
+.bd.en h2.sh{margin-block:0;font-family:inherit;font-size:19px;font-weight:600;line-height:1.75;letter-spacing:.01em}
+.bd.en h2.sh.sp{margin-block-start:1.2em}
+.bd.en h2.sh.sp2{margin-block-start:2.4em}
+/* 手紙の形の作品：宛名を左、差出人を右に同じ行で置く（原文の組みのまま） */
+.bd.en .lh{display:flex;justify-content:space-between;flex-wrap:wrap;gap:0 1em}
+/* 本文の中の中国語（簡体字）。日本語の書体にない字があるので中国語の明朝で組む */
+.bd [lang|="zh"]{font-family:'Noto Serif SC','Noto Serif CJK SC','Source Han Serif SC','Songti SC','STSong','SimSun',serif;font-size:.9em;letter-spacing:.04em}
+.bd [lang|="zh"] [lang|="zh"]{font-size:1em}
+.bd.en p.ref{font-size:16px;overflow-wrap:anywhere}
+.bd.en h2.ctr{text-align:center;margin-block:2.4em 0;font-family:inherit;font-size:19px;font-weight:600;letter-spacing:.04em}
+.lead[lang="en"],.ex[lang="en"]{letter-spacing:.01em}
 .end{border-top:.5px solid var(--rule);padding-top:6px}
 
 /* お知らせ */

@@ -75,10 +75,21 @@ function leadOf(w) {
   }
   return String(w.body || '').split('\n').filter(Boolean).slice(0, 5).join('\n');
 }
+// 本文の言語（日本語以外で書かれた作品は lang: 'en' のように書く）
+const langOf = (w) => w.lang || 'ja';
+// 本文の中の中国語（lang="zh-Hans"）の字。その字だけを Noto Serif SC で読み込む（日本語の書体にない簡体字があるため）
+function zhChars(html) {
+  const set = new Set();
+  for (const m of html.matchAll(/lang="zh-Hans"[^>]*>([^<]*)</g)) for (const c of m[1]) set.add(c);
+  return [...set].join('');
+}
 function descOf(w) {
   const lead = leadOf(w).replace(/\n/g, ' ');
-  const cut = lead.length > 80 ? `${lead.slice(0, 80)}…` : lead;
-  return `${w.author}の${w.genre}${w.sub ? `。${w.sub}` : ''}。${cut}`;
+  const limit = langOf(w) === 'ja' ? 80 : 150;   // 英文は1語が長いので多めに取る
+  const cut = lead.length > limit ? `${lead.slice(0, limit)}…` : lead;
+  // 副題が ? や . で終わるときは「。」を重ねない
+  const sub = w.sub ? `。${w.sub}${/[?!.。？！]$/.test(w.sub) ? '' : '。'}` : '。';
+  return `${w.author}の${w.genre}${langOf(w) === 'en' ? '（英語）' : ''}${sub}${langOf(w) === 'ja' || !w.sub || !/[?!.]$/.test(w.sub) ? '' : ' '}${cut}`;
 }
 const metaJa = (w) => [w.genre, w.status, w.date].filter(Boolean).join('　／　');
 const metaEn = (w) => [GENRE_EN[w.genre] || w.genre, STATUS_EN[w.status] || w.status, w.date].filter(Boolean).join('  /  ');
@@ -91,7 +102,7 @@ works.forEach((w) => {
 });
 
 /* ---------- ページの共通部分 ---------- */
-function head({ root, title, desc, url, image, type = 'website', jsonld }) {
+function head({ root, title, desc, url, image, type = 'website', jsonld, zh = '' }) {
   return `<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -114,8 +125,8 @@ function head({ root, title, desc, url, image, type = 'website', jsonld }) {
 <link rel="apple-touch-icon" href="${root}images/icon-180.png?v=${ver}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&amp;family=Shippori+Mincho:wght@400;500&amp;display=swap">
-<link rel="stylesheet" href="${root}assets/style.css?v=${ver}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Shippori+Mincho:wght@400;500&amp;display=swap">
+${zh ? `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&amp;text=${encodeURIComponent(zh)}&amp;display=swap">\n` : ''}<link rel="stylesheet" href="${root}assets/style.css?v=${ver}">
 ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>\n` : ''}</head>`;
 }
 
@@ -151,8 +162,8 @@ function footer(root) {
 `;
 }
 
-function page({ file, root, cur, title, titleEn, desc, url, image, type, jsonld, main }) {
-  wr(file, `${head({ root, title, desc, url, image: image || abs('images/ogp/site.png'), type, jsonld })}
+function page({ file, root, cur, title, titleEn, desc, url, image, type, jsonld, main, zh }) {
+  wr(file, `${head({ root, title, desc, url, image: image || abs('images/ogp/site.png'), type, jsonld, zh })}
 <body data-root="${root}" data-title-en="${esc(titleEn || title)}">
 ${header(root, cur)}
 <main>
@@ -175,7 +186,7 @@ function topPage() {
 ${f.sub ? `<p class="feat-s" data-en="${en(f.subEn, f.sub)}">${esc(f.sub)}</p>\n` : ''}<p class="feat-a" data-en="${en(f.authorEn, f.author)}">${esc(f.author)}</p>
 </div>
 <div class="feat-b">
-<p class="lead l5" lang="ja">${esc(leadOf(f))}</p>
+<p class="lead l5" lang="${langOf(f)}">${esc(leadOf(f))}</p>
 <a class="link" href="${href(f)}" data-en="Continue reading →">続きを読む　→</a>
 </div>
 </article>` : '';
@@ -183,7 +194,7 @@ ${f.sub ? `<p class="feat-s" data-en="${en(f.subEn, f.sub)}">${esc(f.sub)}</p>\n
 <p class="meta" data-en="${esc(metaEn(w))}">${esc(metaJa(w))}</p>
 <h3 class="card-t"><a href="${href(w)}" data-en="${en(w.titleEn, w.title)}">${esc(w.title)}</a></h3>
 ${w.sub ? `<p class="card-s" data-en="${en(w.subEn, w.sub)}">${esc(w.sub)}</p>\n` : ''}<p class="card-a" data-en="${en(w.authorEn, w.author)}">${esc(w.author)}</p>
-<p class="lead l2" lang="ja">${esc(leadOf(w))}</p>
+<p class="lead l2" lang="${langOf(w)}">${esc(leadOf(w))}</p>
 <a class="link" href="${href(w)}" data-en="Read →">読む　→</a>
 </article>`).join('\n');
   const main = `${SITE.tagline ? `<p class="tagline" data-en="${en(SITE.taglineEn, SITE.tagline)}">${esc(SITE.tagline)}</p>\n` : ''}<section class="latest">
@@ -219,7 +230,7 @@ function worksIndex() {
 <span class="mn">
 <span class="t" data-en="${en(w.titleEn, w.title)}">${esc(w.title)}</span>
 ${w.sub ? `<span class="sb" data-en="${en(w.subEn, w.sub)}">${esc(w.sub)}</span>\n` : ''}<span class="au" data-en="${en(w.authorEn, w.author)}">${esc(w.author)}</span>
-<span class="ex" lang="ja">${esc(leadOf(w).split('\n')[0])}</span>
+<span class="ex" lang="${langOf(w)}">${esc(leadOf(w).split('\n')[0])}</span>
 </span>
 <span class="sd"><span data-en="${esc(GENRE_EN[w.genre])}">${esc(w.genre)}</span><br>${w.status ? `<span data-en="${esc(STATUS_EN[w.status] || w.status)}">${esc(w.status)}</span><br>` : ''}${esc(w.date)}</span>
 </a>`).join('\n');
@@ -258,22 +269,24 @@ ${rows}
 function workPage(w) {
   const root = '../';
   const mode = w.genre === '小説' ? 'v' : 'h';
+  // 日本語以外の作品は横書きだけにする（縦書き・横書きの切り替えを出さない）
+  const ja = langOf(w) === 'ja';
   const url = abs(`works/${w.id}.html`);
   const image = abs(`images/ogp/${w.id}.png`);
   const main = `<article class="rd">
 <div class="bar">
 <a class="bk" href="./" data-en="← All works">← 作品一覧</a>
-<div class="seg" role="group" aria-label="本文の向き" data-en-label="Text direction">
+${ja ? `<div class="seg" role="group" aria-label="本文の向き" data-en-label="Text direction">
 <span class="seg-l" data-en="Text">本文</span>
 <button type="button" id="m-v" aria-pressed="${mode === 'v'}" data-en="Vertical">縦書き</button>
 <button type="button" id="m-h" aria-pressed="${mode === 'h'}" data-en="Horizontal">横書き</button>
-</div>
+</div>` : ''}
 </div>
 <p class="meta" data-en="${esc(metaEn(w))}">${esc(metaJa(w))}</p>
 <h1 class="wt" data-en="${en(w.titleEn, w.title)}">${esc(w.title)}</h1>
 ${w.sub ? `<p class="ws" data-en="${en(w.subEn, w.sub)}">${esc(w.sub)}</p>\n` : ''}<p class="wa" data-en="${en(w.authorEn, w.author)}">${esc(w.author)}</p>
-<p class="jp-only en-only" lang="en">This work is available in Japanese only.</p>
-<div class="bd ${mode}" id="bd" lang="ja" data-genre="${esc(w.genre)}">
+${ja ? '<p class="jp-only en-only" lang="en">This work is available in Japanese only.</p>' : '<p class="jp-only ja-only">この作品は英語で書かれています。</p>'}
+<div class="bd ${ja ? mode : 'h en'}" id="bd" lang="${langOf(w)}" data-genre="${esc(w.genre)}"${ja ? '' : ' data-fixed="h"'}>
 ${bodyHtml(w)}
 </div>
 <div class="end"><a class="bk" href="./" data-en="← All works">← 作品一覧</a></div>
@@ -281,12 +294,12 @@ ${bodyHtml(w)}
   page({
     file: `works/${w.id}.html`, root, cur: 'works',
     title: T(w.title), titleEn: T(w.titleEn || w.title),
-    desc: descOf(w), url, image, type: 'article', main,
+    desc: descOf(w), url, image, type: 'article', main, zh: zhChars(bodyHtml(w)),
     jsonld: {
       '@context': 'https://schema.org', '@type': 'Article',
       headline: w.title, ...(w.sub ? { alternativeHeadline: w.sub } : {}),
       author: { '@type': 'Person', name: w.author },
-      datePublished: iso(w.date), inLanguage: 'ja', genre: w.genre,
+      datePublished: iso(w.date), inLanguage: langOf(w), genre: w.genre,
       image, url, isPartOf: { '@type': 'WebSite', name: SITE.name, url: SITE.url }
     }
   });

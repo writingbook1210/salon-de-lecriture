@@ -79,7 +79,8 @@ def site_html(site):
 def work_html(w):
     e = html.escape
     meta = '　／　'.join(x for x in [w.get('genre'), w.get('status')] if x)
-    if w.get('genre') == '小説':
+    # 小説は題名を縦に組む。ただし日本語以外で書かれた作品は横に組む
+    if w.get('genre') == '小説' and w.get('lang', 'ja') == 'ja':
         css = """
 .top{position:absolute;left:0;top:30px;display:flex;flex-direction:column;gap:14px}
 .top .logo{font-size:30px}
