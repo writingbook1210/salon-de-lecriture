@@ -63,6 +63,46 @@ function bodyHtml(w) {
     .map((ln) => (ln ? `<p class="ln">${esc(ln)}</p>` : '<p class="ln"><br></p>'))
     .join('\n');
 }
+/* 縦書きのときだけ、数字や記号を縦組みの形で見せる（横書きでは原文のまま）。
+   日本語の作品の本文に使う。原文の文字は変えず、縦書き用の形を並べておき、CSS でどちらかを見せる。
+   ・半角の数字：2桁は縦中横、1桁と3桁以上は全角にして立てる。全角の数字2桁も縦中横
+   ・, → 、　( ) → （ ）　? ! → ？ ！　" と “ ” → 〝 〟
+   ・英字を含む語、URL、: / - を含むもの（p43-56 など）は欧文として横に寝かせたまま
+   ・<a> <sup> と、すでに縦中横にしてある所（class="tcy"）は触らない */
+const toFull = (s) => s.replace(/[0-9]/g, (d) => String.fromCharCode(d.charCodeAt(0) + 0xFEE0));
+const vAlt = (h, v) => `<span class="t-h">${h}</span><span class="t-v">${v}</span>`;
+const tcy = (d) => `<span class="tcy">${d}</span>`;
+function vAscii(run, st) {
+  if (/[A-Za-z&;:\/\-]/.test(run)) return run;                  // 欧文・URL・範囲
+  if (/\d[,.]\d/.test(run)) return run;                         // 1,000 や 3.5 などはそのまま
+  const map = { ',': '、', '(': '（', ')': '）', '?': '？', '!': '！' };
+  return run.replace(/[0-9]+|[,()"?!]/g, (t) => {
+    if (/^[0-9]+$/.test(t)) return t.length === 2 ? tcy(t) : vAlt(t, toFull(t));
+    if (t === '"') { st.q = !st.q; return vAlt(t, st.q ? '〝' : '〟'); }
+    return vAlt(t, map[t]);
+  });
+}
+function verticalize(html) {
+  const st = { q: false };
+  const stack = [];                                             // 開いている要素ごとに「触らない」か
+  const skipping = () => stack.some(Boolean);
+  return html.split(/(<[^>]+>)/).map((part) => {
+    if (part.startsWith('<')) {
+      const m = part.match(/^<(\/?)([a-zA-Z0-9]+)/);
+      if (!m || /\/>$/.test(part) || /^(img|br|hr|wbr|source)$/i.test(m[2])) return part;
+      if (m[1]) { stack.pop(); return part; }
+      if (/^(p|li|h[1-6]|figcaption|dd|dt|td|th)$/i.test(m[2])) st.q = false;
+      stack.push(/^(a|sup|code|pre)$/i.test(m[2]) || /class="[^"]*\btcy\b/.test(part));
+      return part;
+    }
+    if (skipping() || !part) return part;
+    return part.replace(/([!-~]+(?: [!-~]+)*)|([０-９]+)|([“”])/g, (all, ascii, fw, q) => {
+      if (ascii) return vAscii(ascii, st);
+      if (fw) return fw.length === 2 ? tcy(fw) : fw;
+      return vAlt(q, q === '“' ? '〝' : '〟');
+    });
+  }).join('');
+}
 function plain(html) {
   return html.replace(/<sup>[\s\S]*?<\/sup>/g, '').replace(/<[^>]+>/g, '')
     .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').trim();
@@ -287,7 +327,7 @@ ${ja ? `<div class="seg" role="group" aria-label="本文の向き" data-en-label
 ${w.sub ? `<p class="ws" data-en="${en(w.subEn, w.sub)}">${esc(w.sub)}</p>\n` : ''}<p class="wa" data-en="${en(w.authorEn, w.author)}">${esc(w.author)}</p>
 ${ja ? '<p class="jp-only en-only" lang="en">This work is available in Japanese only.</p>' : '<p class="jp-only ja-only">この作品は英語で書かれています。</p>'}
 <div class="bd ${ja ? mode : 'h en'}" id="bd" lang="${langOf(w)}" data-genre="${esc(w.genre)}"${ja ? '' : ' data-fixed="h"'}>
-${bodyHtml(w)}
+${ja ? verticalize(bodyHtml(w)) : bodyHtml(w)}
 </div>
 <div class="end"><a class="bk" href="./" data-en="← All works">← 作品一覧</a></div>
 </article>`;

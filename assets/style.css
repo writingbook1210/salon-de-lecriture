@@ -124,6 +124,10 @@ html[lang="en"] .ja-only{display:none!important}
 .bd figcaption{margin-block-start:8px;font-size:12px;line-height:1.6;letter-spacing:.08em;color:var(--sub)}
 .bd sup{font-size:.62em;line-height:0;margin:0 .1em}
 .bd.v sup,.bd.v .tcy{-webkit-text-combine:horizontal;text-combine-upright:all}
+/* 縦書きのときだけ縦組み用の形（全角の数字、、（）〝〟など）を見せ、横書きでは原文の形を見せる */
+.bd .t-v{display:none}
+.bd.v .t-v{display:inline}
+.bd.v .t-h{display:none}
 .bd .fn{margin:0;margin-block-start:2.4em;padding:0;padding-block-start:16px;padding-inline-start:1.8em;border-block-start:.5px solid var(--rule-l);font-size:12px;line-height:1.9;letter-spacing:.04em;color:var(--sub)}
 .bd .fn li{margin-block-end:.6em;overflow-wrap:anywhere}
 /* 英語で書かれた作品：欧文の書体で組み、段落の字下げと空行は原文どおりにする。幅は日本語の本文と同じ */
