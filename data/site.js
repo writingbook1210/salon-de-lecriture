@@ -49,6 +49,12 @@ I would be truly grateful if you would use this salon to keep hold of that convi
   // 英語の署名は2行（\n で改行）
   signatureEn: "Wataru Oikawa, Organizer\nSalon de l'écriture",
 
+  // 紹介文と署名の下に置く節。段落は空行で区切ります。英語（scopeTitleEn / scopeEn）が空のあいだは、英語表示では出しません
+  scopeTitle: '私たちの領域',
+  scopeTitleEn: '',
+  scope: `私たちは、主に芸術（一定の素材・様式を使って、社会の現実、理想とその矛盾や、人間・人生とは何かなどについて表現した人間の活動と、その作品。文学・絵画・彫刻・音楽・演劇など。『新明解国語辞典』より引用）と、それに関する評論やエッセイを活動領域としています。また、その文面を記述するに際しての意見交換、議論、お互いの作品に対する批評などを用いての交流を活発に行なっていきたいと考えております。しかし、芸術という広範な領域を扱うにあたり、活動内での混乱を避けるため、政治・宗教に関する勧誘や、それらに付随し恣意的と判断される宣伝行為を目的とする文面は、お受けいたしかねますのでご了承ください。`,
+  scopeEn: '',
+
   mail: 'writing.book1210@gmail.com',
   instagram: 'salon.de.lecriture',
   sister: { name: 'Organizer’s website', url: 'https://writingbook1210.github.io/' }  // 主宰のページ（writing book）へのリンク
