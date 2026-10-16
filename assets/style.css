@@ -178,6 +178,8 @@ html[lang="en"] .ja-only{display:none!important}
 /* 「このサロンについて」の柱：本文の幅（15px × 34）で、ヘッダーの横線の中央にそろえる */
 .ab-col{max-width:calc(15px * 34);margin:0 auto}
 .ab-p{margin:0 0 1.2em;max-width:34em;font-size:15px;line-height:2.1;letter-spacing:.05em}
+/* 日本語の文章だけ、段落の頭を一字下げる（英語表示と見出しはそのまま） */
+html[lang="ja"] .ab-p{text-indent:1em}
 .ab-sig{margin:2.4em 0 0;max-width:calc(15px * 34);text-align:right;white-space:pre-line;font-size:14px;line-height:1.9;letter-spacing:.1em;color:var(--sub)}
 /* 紹介文の下の節（私たちの領域）。見出しは「このサロンについて」と同じ大きさ */
 .ab-sec{margin-top:72px}
