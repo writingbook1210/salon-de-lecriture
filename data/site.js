@@ -51,9 +51,9 @@ I would be truly grateful if you would use this salon to keep hold of that convi
 
   // 紹介文と署名の下に置く節。段落は空行で区切ります。英語（scopeTitleEn / scopeEn）が空のあいだは、英語表示では出しません
   scopeTitle: '私たちの領域',
-  scopeTitleEn: '',
+  scopeTitleEn: 'Our Scope',
   scope: `私たちは、主に芸術（一定の素材・様式を使って、社会の現実、理想とその矛盾や、人間・人生とは何かなどについて表現した人間の活動と、その作品。文学・絵画・彫刻・音楽・演劇など。『新明解国語辞典』より引用）と、それに関する評論やエッセイを活動領域としています。また、その文面を記述するに際しての意見交換、議論、お互いの作品に対する批評などを用いての交流を活発に行なっていきたいと考えております。しかし、芸術という広範な領域を扱うにあたり、活動内での混乱を避けるため、政治・宗教に関する勧誘や、それらに付随し恣意的と判断される宣伝行為を目的とする文面は、お受けいたしかねますのでご了承ください。`,
-  scopeEn: '',
+  scopeEn: `Our activities focus mainly on art (defined in the Shin Meikai Kokugo Jiten as “human activity that uses particular materials and forms to express such things as the realities and ideals of society and the contradictions between them, or what it means to be human and what life is, together with the works it produces, such as literature, painting, sculpture, music, and theater”) and on criticism and essays about art. We also hope to foster lively exchanges by sharing views and debating as we write, and by critiquing one another’s work. However, because art is such a broad field, and to avoid confusion within our activities, we are unable to accept submissions intended for political or religious solicitation, or related promotional content that we judge to be self-serving. Thank you for your understanding.`,
 
   mail: 'writing.book1210@gmail.com',
   instagram: 'salon.de.lecriture',
