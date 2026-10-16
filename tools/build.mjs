@@ -73,6 +73,7 @@ const toFull = (s) => s.replace(/[0-9]/g, (d) => String.fromCharCode(d.charCodeA
 const vAlt = (h, v) => `<span class="t-h">${h}</span><span class="t-v">${v}</span>`;
 const tcy = (d) => `<span class="tcy">${d}</span>`;
 function vAscii(run, st) {
+  if (run === '/') return vAlt(run, '／');                       // 日本語の間の / は全角にして立てる
   if (/[A-Za-z&;:\/\-]/.test(run)) return run;                  // 欧文・URL・範囲
   if (/\d[,.]\d/.test(run)) return run;                         // 1,000 や 3.5 などはそのまま
   const map = { ',': '、', '(': '（', ')': '）', '?': '？', '!': '！' };
