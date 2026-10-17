@@ -366,20 +366,42 @@ function newsPage() {
 
 /* ---------- このサロンについて ---------- */
 function aboutPage() {
+  const root = '../';
   const paras = (ja, enText) => {
     const a = String(ja || '').split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
     const b = String(enText || '').split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
     return a.map((p, i) => `<p class="ab-p" data-en="${en(b[i], p)}">${esc(p)}</p>`).join('\n');
   };
+  // 節の本文：[文字](URL) をリンクに。サイトの中の URL には root と版番号を付ける
+  const linkify = (html) => html.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, text, url) => {
+    if (/^(https?:|mailto:|#)/.test(url)) return `<a href="${url}" target="_blank" rel="noopener">${text}</a>`;
+    const href = `${root}${url}${/\.(pdf|jpe?g|png)$/i.test(url) ? `?v=${ver}` : ''}`;
+    return /\.pdf$/i.test(url) ? `<a href="${href}" target="_blank" rel="noopener">${text}</a>` : `<a href="${href}">${text}</a>`;
+  });
+  const sectionBody = (text) => String(text || '').split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean).map((blk) => {
+    const lines = blk.split('\n');
+    if (/^[0-9０-９]+[．.]/.test(lines[0])) {           // 「1．作品を送る」→ 小見出し
+      const rest = lines.slice(1).join('\n').trim();
+      return `<h3 class="ab-step">${esc(lines[0])}</h3>${rest ? `\n<p class="ab-p">${linkify(esc(rest))}</p>` : ''}`;
+    }
+    if (/^→/.test(blk)) return `<p class="ab-p ab-go">${linkify(esc(blk))}</p>`;
+    return `<p class="ab-p">${linkify(esc(blk))}</p>`;
+  }).join('\n');
+  const sections = (SITE.sections || []).filter((s) => s.body).map((s) => {
+    const hasEn = !!(s.titleEn && s.bodyEn);
+    // 英語のある節は、段落ごとに英語を差し替える（いまは小見出しやリンクのない節だけ英語あり）
+    const body = hasEn ? paras(s.body, s.bodyEn) : sectionBody(s.body);
+    return `<div class="ab-sec${hasEn ? '' : ' ja-only'}">
+<h2 class="h1"${hasEn ? ` data-en="${esc(s.titleEn)}"` : ''}>${esc(s.title)}</h2>
+${body}
+</div>`;
+  }).join('\n');
   // 見出し・本文・署名・ボタンは、ヘッダーの横線の中央にそろえた1つの柱（ab-col）に入れる
   const main = `<section>
 <div class="ab-col">
 <h1 class="h1" data-en="About the salon">このサロンについて</h1>
 ${SITE.tagline ? `<p class="ab-t" data-en="${en(SITE.taglineEn, SITE.tagline)}">${esc(SITE.tagline)}</p>\n` : ''}${paras(SITE.intro, SITE.introEn)}
-${SITE.scope ? `<div class="ab-sec${SITE.scopeEn ? '' : ' ja-only'}">
-<h2 class="h1" data-en="${en(SITE.scopeTitleEn, SITE.scopeTitle)}">${esc(SITE.scopeTitle)}</h2>
-${paras(SITE.scope, SITE.scopeEn)}
-</div>` : ''}
+${sections}
 ${SITE.signature ? `<p class="ab-sig" data-en="${en(SITE.signatureEn, SITE.signature)}">${esc(SITE.signature)}</p>` : ''}
 <div class="btns">
 <a class="btn js-cta" href="../news/" data-en="Join the next salon">次回の会に申し込む</a>
@@ -391,7 +413,7 @@ ${SITE.signature ? `<p class="ab-sig" data-en="${en(SITE.signatureEn, SITE.signa
 </div>
 </section>`;
   page({
-    file: 'about/index.html', root: '../', cur: 'about', title: T('このサロンについて'), titleEn: T('About'),
+    file: 'about/index.html', root, cur: 'about', title: T('このサロンについて'), titleEn: T('About'),
     desc: String(SITE.intro || '').split(/\n\s*\n/)[0].trim() || SITE.description, url: abs('about/'), main
   });
 }
