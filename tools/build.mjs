@@ -389,8 +389,10 @@ function aboutPage() {
   }).join('\n');
   const sections = (SITE.sections || []).filter((s) => s.body).map((s) => {
     const hasEn = !!(s.titleEn && s.bodyEn);
-    // 英語のある節は、段落ごとに英語を差し替える（いまは小見出しやリンクのない節だけ英語あり）
-    const body = hasEn ? paras(s.body, s.bodyEn) : sectionBody(s.body);
+    // 英語のある節は、日本語と英語の本文を両方書き出し、表示の言語でどちらかを見せる
+    const body = hasEn
+      ? `<div class="ja-only">\n${sectionBody(s.body)}\n</div>\n<div class="en-only" lang="en">\n${sectionBody(s.bodyEn)}\n</div>`
+      : sectionBody(s.body);
     return `<div class="ab-sec${hasEn ? '' : ' ja-only'}">
 <h2 class="h1"${hasEn ? ` data-en="${esc(s.titleEn)}"` : ''}>${esc(s.title)}</h2>
 ${body}

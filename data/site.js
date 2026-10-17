@@ -60,7 +60,7 @@ I would be truly grateful if you would use this salon to keep hold of that convi
       bodyEn: `Our activities focus mainly on art (defined in the Shin Meikai Kokugo Jiten as “human activity that uses particular materials and forms to express such things as the realities and ideals of society and the contradictions between them, or what it means to be human and what life is, together with the works it produces, such as literature, painting, sculpture, music, and theater”) and on criticism and essays about art. We also hope to foster lively exchanges by sharing views and debating as we write, and by critiquing one another’s work. However, because art is such a broad field, and to avoid confusion within our activities, we are unable to accept submissions intended for political or religious solicitation, or related promotional content that we judge to be self-serving. Thank you for your understanding.`
     },
     {
-      title: '掲載までの流れ', titleEn: '',
+      title: '掲載までの流れ', titleEn: 'From Submission to Publication',
       body: `当サロンに作品を載せるときは、次の流れで進めます。どの段階でも、書き手の了承を得ないまま先へ進むことはありません。
 
 1．作品を送る
@@ -81,10 +81,29 @@ I would be truly grateful if you would use this salon to keep hold of that convi
 承認いただいた内容でサイトに公開し、正しく表示されていることを確かめてからご報告します。
 
 公開後に作品の修正や取り下げをご希望の場合も、[連絡先](contact/)までご相談ください。`,
-      bodyEn: ''
+      bodyEn: `When we publish a work on this site, we follow the steps below. At no stage do we move forward without the writer’s consent.
+
+1. Send your work
+Please send the work you would like us to publish by email. We accept fiction, criticism, and essays, in either Japanese or English.
+
+2. Consent to how your manuscript is handled
+Before we handle your manuscript with AI (Claude), we explain where AI is used, and where and for how long the manuscript you entrust to us is kept, and we ask for your consent. If you would prefer that your work not be handled with AI, we will discuss with you how to proceed.
+
+3. Preparing the page
+Once we have your consent, the organizers build the page for your work. We make no changes to the text itself. If we notice anything that may need attention, such as typos or errors in sources, we list it for you without correcting it. Introductions and headings are written with AI, but you are also welcome to provide your own.
+
+4. Review before publication
+We send you a review document showing how the page looks on a computer and a smartphone, how it appears in English, and the image shown when it is shared on social media. You decide on the publication date, how the title and its translation are handled, whether to publish the full text or an excerpt, and whether to correct any points we raised. We publish only after you have approved everything.
+
+→ [Sample review document (PDF, in Japanese)](files/review-sample.pdf)
+
+5. Publication
+We publish the page as approved, check that it displays correctly, and then let you know.
+
+If you would like to revise or withdraw your work after publication, please get in touch through our [contact page](contact/).`
     },
     {
-      title: 'AIの利用について', titleEn: '',
+      title: 'AIの利用について', titleEn: 'Our Use of AI',
       body: `当サロンでは、サイトの運営にAI（Claude）を利用しています。AIを使うのは、掲載用のページの作成、紹介文や見出しの作成、題名の翻訳、誤りと思われる箇所の確認です。作品本文をAIで書き換えたり、翻訳したりすることはありません。書き手ご自身が翻訳した作品を載せる場合は、訳者と、AI翻訳を使ったかどうかを作品ページに明記します。
 
 運営で使うアカウントは、会話がAIの学習に使われない設定にしています。また、公開している作品について、AIの学習を目的とした主要なクローラーによる収集を拒否する設定をしています。
@@ -92,7 +111,13 @@ I would be truly grateful if you would use this salon to keep hold of that convi
 保存期間や例外を含む詳しい内容は、次のページにまとめています。
 
 → [AIの利用とデータの取り扱いについて（2026年10月14日改定）](files/ai-data-policy.pdf)`,
-      bodyEn: ''
+      bodyEn: `We use AI (Claude) to run this site. We use it to build the pages for published works, to write introductions and headings, to translate titles, and to check for possible errors. We never use AI to rewrite or translate the text of a work. When we publish a work that the writer has translated, the work’s page states who translated it and whether AI translation was used.
+
+The account we use to run the site is set so that our conversations are not used to train AI. We have also set the site to refuse collection of our published works by the major crawlers that gather data for AI training.
+
+Details, including how long data is kept and the exceptions, are set out in the following document.
+
+→ [Our Use of AI and Handling of Data (revised October 14, 2026; PDF, in Japanese)](files/ai-data-policy.pdf)`
     }
   ],
 
