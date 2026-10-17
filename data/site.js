@@ -89,7 +89,7 @@ I would be truly grateful if you would use this salon to keep hold of that convi
 
 保存期間や例外を含む詳しい内容は、次のページにまとめています。
 
-→ [AIの利用とデータの取り扱いについて（2026年10月17日改定）](files/ai-data-policy.pdf)`,
+→ [AIの利用とデータの取り扱いについて（2026年10月14日改定）](files/ai-data-policy.pdf)`,
       bodyEn: ''
     }
   ],
