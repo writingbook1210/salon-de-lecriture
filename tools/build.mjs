@@ -402,7 +402,7 @@ ${body}
   // 見出し・本文・署名・ボタンは、ヘッダーの横線の中央にそろえた1つの柱（ab-col）に入れる
   const main = `<section>
 <div class="ab-col">
-<h1 class="h1" data-en="About the salon">このサロンについて</h1>
+<h1 class="h1" data-en="About the Salon">このサロンについて</h1>
 ${SITE.tagline ? `<p class="ab-t" data-en="${en(SITE.taglineEn, SITE.tagline)}">${esc(SITE.tagline)}</p>\n` : ''}<div class="ja-only">
 ${sectionBody(SITE.intro)}
 </div>

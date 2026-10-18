@@ -17,22 +17,9 @@ var SITE = {
   intro: `当サロンは、読書会や合評会にとどまらず、ZINEとしての合同誌を刊行するために設立した団体です。対面で集まる会のほか、このウェブサイトでも参加者の小説・評論・エッセイを公開しています。作品は日本語・英語のどちらでも受け付けています。
 
 掲載をご希望の方は[掲載までの流れ](#flow)をご覧ください。`,
-  // introEn は旧版の紹介文の英語。新しい紹介文（intro と「Salon de l'écriture」の節）の英訳が確認されたら差し替える
-  introEn: `Salon de l'écriture is a group founded not only to hold reading groups and critique sessions, but also to publish a collective anthology in the form of a zine. Alongside our in-person gatherings, we share our members' fiction, criticism and essays on this website. We put into words what we have seen and heard, and even what we have felt and thought, and our activities reach beyond literature into the arts and scholarship.
+  introEn: `Salon de l’écriture is a group founded not only to hold reading groups and critique sessions, but also to publish a joint anthology in the form of a zine. Alongside our in-person meetings, we publish members’ fiction, criticism, and essays on this website. We accept work in either Japanese or English.
 
-In Japan, many people hear the word "salon" and picture something stiff and one-directional: a circle built around one person, or a gathering of followers. Yet if we trace the word back to its roots, it refers to a large room in a grand house, such as a drawing room or a parlor.
-
-It was also a place where people talked about shared topics and interests. We can say, then, that it was a space for exchanging knowledge and opinions, intellectual yet unceremonious. If so, shouldn't a salon be something lighter and livelier?
-
-These days, platforms such as note, X and Threads let anyone publish their opinions and essays, and the freedom and variety of expression keep growing. That in itself is very welcome. Still, I can't shake the feeling that what gets shown first is increasingly what is driven by "likes" and other signs of attention.
-
-I believe that for those of us who write, the act of writing should in itself be recognized as creation.
-
-To become the object of someone else's judgment takes great courage. To throw that chance away carelessly would, I think, be the same as discarding a precious experience. Even so, I wanted to create a place where we can first face our own work head-on and share it with others before any judgment is made. That is why I founded Salon de l'écriture.
-
-In closing, I think it is painful and hard to resist being swept along by others, to remain unshaken by anyone's judgment, and still to believe fully in your own work. Yet if we lose that spirit, won't we lose sight of why we are writing, what we set out to write for, why we had to write, and why we were writing at all?
-
-I would be truly grateful if you would use this salon to keep hold of that conviction.`,
+If you would like your work published here, please see [From Submission to Publication](#flow).`,
 
   signature: "Salon de l'écriture　主宰　及川渉",
   // 英語の署名は2行（\n で改行）
@@ -46,7 +33,7 @@ I would be truly grateful if you would use this salon to keep hold of that convi
   sections: [
     {
       id: 'salon',
-      title: "Salon de l'écriture", titleEn: '',
+      title: "Salon de l'écriture", titleEn: 'Salon de l’écriture',
       body: `何かを欲し、心を奪われ、そしてそれを体現しようともがく。私たちはそうやって、「私」というものを決めている。
 
 私の場合、それは書くことだ。言葉を見つけ、捕まえようと 手を伸ばす。けれど、いざ掴もうとすると、それは指の隙間から綺麗にこぼれ落ちて、ひとつのかけらも残らない。それが悲しいから、私はひたすらにもがく。書いて、紡いで、結んで、緩めて、解いて、消す。その終わりのないような、途方に暮れることも飽きてしまう作業の集積が、言葉となり、文章となり、本となり、やがて私になる。
@@ -66,7 +53,25 @@ I would be truly grateful if you would use this salon to keep hold of that convi
 誰かに流されず、誰かからの評価をものともせず、自分の作品を信じ切る。それはとても苦しく、大変なことだ。それでも、この心意気を忘れてしまえば、なぜ書いているのか、なぜ書かなければならなかったのかが、わからなくなってしまうだろう。
 
 その信念を忘れないために、このサロンを使っていただけたら、大変ありがたく思います。`,
-      bodyEn: ''
+      bodyEn: `We desire something, are captivated by it, and struggle to embody it. That is how we determine what this thing called “I” is.
+
+For me, that something is writing. I find words and reach out to catch them. But the moment I try to close my hand, they slip clean through my fingers, leaving not a single fragment behind. Because that saddens me, I go on struggling, single-mindedly. I write, spin, tie, loosen, unravel, erase. The work seems to have no end — so endless that even being at a loss over it grows tiresome — and its accumulation becomes words, then sentences, then books, and in time becomes me.
+
+These are good times: many ways of thinking are accepted, and asserting one’s own way of life is looked on favorably. With that has come a growing number of outlets — note, X, Threads — where anyone can post their opinions and arguments, and the freedom and diversity of expression continue to expand. That in itself is very welcome. And yet, when something is pushed to the top of our feeds because it has drawn “likes” and other reactions, can we say from the bottom of our hearts, without a shadow of doubt, that it is “what I am interested in”? In the end, aren’t we simply being handed the tastes a system has predicted for us, without knowing why, and savoring them without ever asking what they mean? While we have all been averting our eyes from the damage this does, living “freely” on your own has, if anything, become harder than before.
+
+Desire, by nature, is not so simple a thing that it can be easily satisfied. Wasn’t it something joyful and, at the same time, painful? Sharing work that is a reflection of yourself with someone else, whatever your circumstances or upbringing; offering opinions, arguing, pushing one another to do better — that, too, is what it should have been. Somewhere along the way, we have come to feel that all this belongs to the distant past.
+
+It is a long time now since we were cast out into a world that is facile and yet bewilderingly complex, a world where we can gaze with envy at someone else’s glory with the greatest of ease. And we are far too easily swayed by the answers and “correct” solutions handed to us in an instant.
+
+That is precisely why I believe that writers and their work should be acknowledged as something they themselves have created, for the simple fact that they write. Of course, to become the object of someone else’s assessment takes great courage, and to throw that opportunity away out of hand is the same as discarding a precious experience. Even so, what we need now is not an easy-to-grasp yardstick for judging. It is time — time to look at the countless things that belong to a work alone, its character, its style. Before any assessment, we face our own work head-on and share it with someone. For that, we need a place where we can stop for a moment and exchange words.
+
+That place is what I want to call a “salon.” Many people in Japan, though, hear the word “salon” and picture a stiff, one-way gathering centered on a single person, or assembled to support one. Yet if we trace the word to its origins, a salon was a large room in a grand house — a drawing room, a parlor — and also a place where people talked together about shared topics and interests. It must have been intellectual and yet unceremonious, a place where people brought their knowledge and opinions to one another. If so, shouldn’t a salon be something lighter, something full of life and bustle?
+
+It was out of these thoughts that I started Salon de l’écriture. We set down in print what we have watched and listened to, and what we have felt and thought as well, reaching beyond literature into art and scholarship.
+
+To refuse to be swept along by others, to pay no heed to anyone’s assessment, and to believe utterly in your own work — this is painful, and it is hard. Even so, if we forget that spirit, we will lose sight of why we are writing, and why we had to write.
+
+If you would use this salon to keep hold of that conviction, I would be truly grateful.`
     },
     {
       title: '私たちの領域', titleEn: 'Our Scope',
