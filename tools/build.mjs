@@ -374,7 +374,8 @@ function aboutPage() {
   };
   // 節の本文：[文字](URL) をリンクに。サイトの中の URL には root と版番号を付ける
   const linkify = (html) => html.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, text, url) => {
-    if (/^(https?:|mailto:|#)/.test(url)) return `<a href="${url}" target="_blank" rel="noopener">${text}</a>`;
+    if (/^#/.test(url)) return `<a href="${url}">${text}</a>`;              // 同じページの節へ
+    if (/^(https?:|mailto:)/.test(url)) return `<a href="${url}" target="_blank" rel="noopener">${text}</a>`;
     const href = `${root}${url}${/\.(pdf|jpe?g|png)$/i.test(url) ? `?v=${ver}` : ''}`;
     return /\.pdf$/i.test(url) ? `<a href="${href}" target="_blank" rel="noopener">${text}</a>` : `<a href="${href}">${text}</a>`;
   });
@@ -393,7 +394,7 @@ function aboutPage() {
     const body = hasEn
       ? `<div class="ja-only">\n${sectionBody(s.body)}\n</div>\n<div class="en-only" lang="en">\n${sectionBody(s.bodyEn)}\n</div>`
       : sectionBody(s.body);
-    return `<div class="ab-sec${hasEn ? '' : ' ja-only'}">
+    return `<div class="ab-sec${hasEn ? '' : ' ja-only'}"${s.id ? ` id="${esc(s.id)}"` : ''}>
 <h2 class="h1"${hasEn ? ` data-en="${esc(s.titleEn)}"` : ''}>${esc(s.title)}</h2>
 ${body}
 </div>`;
@@ -402,7 +403,10 @@ ${body}
   const main = `<section>
 <div class="ab-col">
 <h1 class="h1" data-en="About the salon">このサロンについて</h1>
-${SITE.tagline ? `<p class="ab-t" data-en="${en(SITE.taglineEn, SITE.tagline)}">${esc(SITE.tagline)}</p>\n` : ''}${paras(SITE.intro, SITE.introEn)}
+${SITE.tagline ? `<p class="ab-t" data-en="${en(SITE.taglineEn, SITE.tagline)}">${esc(SITE.tagline)}</p>\n` : ''}<div class="ja-only">
+${sectionBody(SITE.intro)}
+</div>
+${SITE.introEn ? `<div class="en-only" lang="en">\n${sectionBody(SITE.introEn)}\n</div>` : ''}
 ${sections}
 ${SITE.signature ? `<p class="ab-sig" data-en="${en(SITE.signatureEn, SITE.signature)}">${esc(SITE.signature)}</p>` : ''}
 <div class="btns">
@@ -416,7 +420,7 @@ ${SITE.signature ? `<p class="ab-sig" data-en="${en(SITE.signatureEn, SITE.signa
 </section>`;
   page({
     file: 'about/index.html', root, cur: 'about', title: T('このサロンについて'), titleEn: T('About'),
-    desc: String(SITE.intro || '').split(/\n\s*\n/)[0].trim() || SITE.description, url: abs('about/'), main
+    desc: String(SITE.intro || '').split(/\n\s*\n/)[0].replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').trim() || SITE.description, url: abs('about/'), main
   });
 }
 
