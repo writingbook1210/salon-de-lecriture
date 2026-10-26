@@ -25,11 +25,8 @@ var NEWS = {
     titleEn: 'How Our Salons Work',
     items: [
       { label: '内容', labelEn: 'Programme',
-        text: '前半は読書会、後半は談話と交流の時間です。',
-        textEn: 'The first half is a reading group, and the second half is time for conversation and getting to know one another.' },
-      { label: '読書会', labelEn: 'Reading group',
-        text: 'ふだんは、参加者がそれぞれ好きな本を持ち寄って紹介し合います。ときどき課題本を決めて、事前にお知らせする回もあります。',
-        textEn: 'Usually, participants each bring a book they love and introduce it to the others. Sometimes we choose a set book and announce it in advance.' },
+        text: '前半は読書会、後半は談話と交流の時間です。読書会では、ふだんは参加者がそれぞれ好きな本を持ち寄って紹介し合います。ときどき課題本を決めて、事前にお知らせする回もあります。',
+        textEn: 'The first half is a reading group, and the second half is time for conversation and getting to know one another. In the reading group, participants usually each bring a book they love and introduce it to the others. Sometimes we choose a set book and announce it in advance.' },
       { label: '場所', labelEn: 'Venue',
         text: '東京都内（会場は申込後にお知らせします）。オンラインでも参加できます。',
         textEn: 'Tokyo (the venue will be sent to you after you sign up). You can also join online.' },
