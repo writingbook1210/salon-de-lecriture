@@ -24,9 +24,6 @@ var NEWS = {
     title: '会のかたち',
     titleEn: 'How Our Salons Work',
     items: [
-      { label: '日程', labelEn: 'Date',
-        text: '日程はまだ確定していません。決まりしだい、このページでお知らせします。',
-        textEn: 'The date has not been decided yet. It will be announced on this page as soon as it is set.' },
       { label: '内容', labelEn: 'Programme',
         text: '前半は読書会、後半は談話と交流の時間です。読書会では、ふだんは参加者がそれぞれ好きな本を持ち寄って紹介し合います。ときどき課題本を決めて、事前にお知らせする回もあります。',
         textEn: 'The first half is a reading group, and the second half is time for conversation and getting to know one another. In the reading group, participants usually each bring a book they love and introduce it to the others. Sometimes we choose a set book and announce it in advance.' },
