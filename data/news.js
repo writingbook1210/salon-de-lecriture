@@ -8,7 +8,7 @@
      content: 内容　　form : この会だけ別のフォームにするときの URL（ふだんは ''）
      …En    : 英語表示のときの文面
      draft: true のあいだは公開サイトに出ません（仮の内容。URLの末尾に ?preview=1 を付けると見えます）
-   guide    : 会のかたち（日程にかかわらず出す会の説明）。下の guide のところを参照
+   guide    : これからの会の予定（日程にかかわらず出す会の進め方）。下の guide のところを参照
    records  : 開催後の記録。新しいものを上に足します。
      { date: '2026/11/14', title: '…', titleEn: '…', text: '…（改行は \n）', textEn: '…' } */
 var NEWS = {
@@ -17,11 +17,12 @@ var NEWS = {
   upcoming: [],
 
 
-  /* 会のかたち：日程が決まっていなくても、お知らせのページに出す会の説明。
-     items は 見出し(label) と 中身(text) の組。…En は英語表示の文面（空なら日本語のまま出す）
+  /* これからの会の予定：日程が決まっていなくても、「これからの会」の欄に出す会の進め方。
+     intro は最初の一文、items は 見出し(label) と 中身(text) の組。…En は英語表示の文面（空なら日本語のまま出す）
      draft: true のあいだは公開サイトに出ない（URL の末尾に ?preview=1 を付けると見える） */
   guide: {
-    title: '会のかたち', titleEn: 'How Our Salons Work',
+    intro: 'これからの会は、次のような形で開く予定です。',
+    introEn: 'We plan to hold our upcoming salons as follows.',
     items: [
       { label: '内容', labelEn: 'Programme',
         text: '前半は読書会、後半は談話と交流の時間です。',
@@ -33,14 +34,14 @@ var NEWS = {
         text: '東京都内（会場は申込後にお知らせします）。オンラインでも参加できます。',
         textEn: 'Tokyo (the venue will be sent to you after you sign up). You can also join online.' },
       { label: '持ち物', labelEn: 'What to bring',
-        text: '紹介したい本があればお持ちください。紹介をせず、話を聞くだけの参加もできます。',
-        textEn: 'A book you would like to introduce, if you have one. You are also welcome to come just to listen.' },
+        text: '紹介したい本や作品があればお持ちください。紹介をせず、話を聞くだけの参加もできます。',
+        textEn: 'A book or work you would like to introduce, if you have one. You are also welcome to come just to listen.' },
       { label: '定員', labelEn: 'Capacity',
         text: '定めていません。',
         textEn: 'No limit.' },
       { label: '参加費', labelEn: 'Fee',
-        text: '検討中です。決まりしだい、ここでお知らせします。',
-        textEn: 'To be decided. We will announce it here.' },
+        text: '紹介したい本や作品を持ってくる方は無料、それ以外の方は500円です。',
+        textEn: 'Free if you bring a book or work to introduce; ¥500 otherwise.' },
       { label: '申込', labelEn: 'How to join',
         text: 'Googleフォームから受け付けます。フォームは準備中です。',
         textEn: 'Via Google Form. The form is not open yet.' }

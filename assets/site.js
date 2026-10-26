@@ -203,19 +203,19 @@
     }).join('');
   }
 
-  // 会のかたち（日程にかかわらず出す会の説明）
+  // これからの会の予定（日程にかかわらず「これからの会」の欄に出す会の進め方）
   function renderGuide() {
     var el = doc.getElementById('guide');
     if (!el) return;
     var g = NEWS.guide;
     if (!g || !(g.items || []).length || (g.draft && !preview)) { el.innerHTML = ''; return; }
-    el.innerHTML = '<section class="sec2">' +
-      '<div class="sec-hd"><h2>' + esc(pick(g, 'title')) + '</h2>' +
-        (g.draft ? '<span class="draft">' + esc(s('draft')) + '</span>' : '') + '</div>' +
-      '<dl class="dl guide">' + g.items.map(function (it) {
+    el.innerHTML = '<div class="guide">' +
+      (g.draft ? '<span class="draft">' + esc(s('draft')) + '</span>' : '') +
+      (pick(g, 'intro') ? '<p class="guide-lead">' + esc(pick(g, 'intro')) + '</p>' : '') +
+      '<dl class="dl">' + g.items.map(function (it) {
         return '<dt>' + esc(pick(it, 'label')) + '</dt><dd>' + esc(pick(it, 'text')) + '</dd>';
       }).join('') + '</dl>' +
-    '</section>';
+    '</div>';
   }
 
   function renderRecords() {

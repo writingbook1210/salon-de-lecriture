@@ -168,9 +168,10 @@ html[lang="en"] .ja-only{display:none!important}
 .dl dd{margin:0;padding:10px 0;border-top:.5px solid var(--rule-l);overflow-wrap:anywhere}
 .sec2{margin-top:56px}
 .empty{margin:0;padding:24px 0;font-size:14px;line-height:2;letter-spacing:.06em;color:var(--sub)}
-/* 会のかたち */
-.dl.guide>:nth-child(-n+2){border-top:0}
-.dl.guide dd{line-height:2}
+/* これからの会の予定 */
+.guide{margin-top:8px}
+.guide-lead{margin:0 0 16px;font-size:15px;line-height:2;letter-spacing:.06em}
+.guide .dl dd{line-height:2}
 .rec{padding:24px 0;border-bottom:.5px solid var(--rule-l)}
 .rec-d{margin:0;font-size:12px;letter-spacing:.16em;color:var(--sub)}
 .rec h3{margin:8px 0;font-size:18px;font-weight:500;line-height:1.6;letter-spacing:.06em}
