@@ -123,6 +123,28 @@ We publish the page as approved, check that it displays correctly, and then let 
 If you would like to revise or withdraw your work after publication, please get in touch through our [contact page](contact/).`
     },
     {
+      id: 'rights',
+      title: '作品の権利について', titleEn: 'Rights to Your Work',
+      body: `当サロンに掲載した作品の著作権は、書き手に残ります。掲載の許諾は独占的なものではないため、同じ作品をほかの場所で発表することも自由です。本サイトでの公開と、告知のための紹介のほかに作品を使うときは、その都度ご相談します。
+
+合同誌への収録は、本サイトへの掲載とは別に、号ごとに同意をいただきます。増刷や電子版などを出すときも、その都度ご連絡し、期限内であれば辞退できます。収益が出た場合は収録者で均等に分け、赤字になっても、参加費を超える負担はお願いしません。
+
+掲載後の修正や取り下げも、いつでもご依頼いただけます。ただし、すでに頒布した合同誌などは回収できません。また、本サイトへの掲載や合同誌への収録により、文学賞で「既発表」とみなされる場合があるため、応募を予定している作品は、掲載前に各賞の規定をご確認ください。
+
+取り下げの方法、合同誌の冊数や費用の決め方、個人情報の取り扱いなど、詳しい内容は次のページにまとめています。
+
+→ [作品の権利と、掲載・収録の取り扱いについて（2026年10月27日）](files/rights-policy.pdf)`,
+      bodyEn: `Copyright in any work published on this site remains with the writer. Your permission for us to publish is non-exclusive, so you are free to publish the same work elsewhere. If we wish to use your work for anything beyond publishing it on this site and introducing it in our announcements, we will ask you each time.
+
+Including a work in our anthology requires separate consent for each issue, apart from consent to publish it on this site. If we later issue a reprint or an e-book edition, we will contact you each time, and you may decline within the stated period. If an anthology makes a profit, it is shared equally among the contributors. If it makes a loss, we will not ask you to pay more than the participation fee.
+
+You may ask us to revise or withdraw your work at any time after publication, although we cannot recall copies of an anthology that has already been distributed. Please also note that some literary prizes may treat a work as previously published once it appears on this site or in our anthology. If you plan to submit a work to a prize, please check its rules before publication.
+
+Details are set out in the following document, including how to withdraw your work, how print runs and costs are decided, and how we handle personal information.
+
+→ [Rights to Your Work and How We Publish and Include It (dated October 27, 2026; PDF, in Japanese)](files/rights-policy.pdf)`
+    },
+    {
       title: 'AIの利用について', titleEn: 'Our Use of AI',
       body: `当サロンでは、サイトの運営にAI（Claude）を利用しています。AIを使うのは、掲載用のページの作成、紹介文や見出しの作成、題名の翻訳、誤りと思われる箇所の確認です。作品本文をAIで書き換えたり、翻訳したりすることはありません。書き手ご自身が翻訳した作品を載せる場合は、訳者と、AI翻訳を使ったかどうかを作品ページに明記します。
 
