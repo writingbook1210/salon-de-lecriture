@@ -139,7 +139,7 @@
 
   function setCtas() {
     var ev = upcoming()[0];
-    var form = ev ? formOf(ev) : '';
+    var form = ev ? formOf(ev) : (NEWS.formUrl || '');
     each('.js-cta', function (a) {
       if (form) {
         a.setAttribute('href', form);
@@ -213,7 +213,9 @@
       (g.draft ? '<span class="draft">' + esc(s('draft')) + '</span>' : '') +
       (pick(g, 'title') ? '<h3 class="guide-h">' + esc(pick(g, 'title')) + '</h3>' : '') +
       '<dl class="dl">' + g.items.map(function (it) {
-        return '<dt>' + esc(pick(it, 'label')) + '</dt><dd>' + esc(pick(it, 'text')) + '</dd>';
+        var form = it.link ? (it.url || NEWS.formUrl || '') : '';
+        return '<dt>' + esc(pick(it, 'label')) + '</dt><dd>' + esc(pick(it, 'text')) +
+          (form ? '<br><a class="link" ' + linkAttrs(form) + '>' + esc(pick(it, 'link')) + '　→</a>' : '') + '</dd>';
       }).join('') + '</dl>' +
     '</div>';
   }

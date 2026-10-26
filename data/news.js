@@ -12,7 +12,7 @@
    records  : 開催後の記録。新しいものを上に足します。
      { date: '2026/11/14', title: '…', titleEn: '…', text: '…（改行は \n）', textEn: '…' } */
 var NEWS = {
-  formUrl: '',
+  formUrl: 'https://forms.gle/uAgr2wAodHfwX4LC8',
 
   upcoming: [],
 
@@ -24,6 +24,9 @@ var NEWS = {
     title: '会のかたち',
     titleEn: 'How Our Salons Work',
     items: [
+      { label: '日程', labelEn: 'Date',
+        text: '日程はまだ確定していません。決まりしだい、このページでお知らせします。',
+        textEn: 'The date has not been decided yet. It will be announced on this page as soon as it is set.' },
       { label: '内容', labelEn: 'Programme',
         text: '前半は読書会、後半は談話と交流の時間です。読書会では、ふだんは参加者がそれぞれ好きな本を持ち寄って紹介し合います。ときどき課題本を決めて、事前にお知らせする回もあります。',
         textEn: 'The first half is a reading group, and the second half is time for conversation and getting to know one another. In the reading group, participants usually each bring a book they love and introduce it to the others. Sometimes we choose a set book and announce it in advance.' },
@@ -40,8 +43,9 @@ var NEWS = {
         text: '紹介したい本や作品を持ってくる方は無料、それ以外の方は500円です。',
         textEn: 'Free if you bring a book or work to introduce; ¥500 otherwise.' },
       { label: '申込', labelEn: 'How to join',
-        text: 'Googleフォームから受け付けます。フォームは準備中です。',
-        textEn: 'Via Google Form. The form is not open yet.' }
+        text: 'Googleフォームから受け付けています。日程が決まったら、あらためてご案内します。',
+        textEn: 'Sign-ups are taken through a Google Form. We will contact you again once the date is set.',
+        link: 'Googleフォームを開く', linkEn: 'Open the Google Form' }
     ]
   },
 
