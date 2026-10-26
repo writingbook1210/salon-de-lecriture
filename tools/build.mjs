@@ -353,6 +353,7 @@ function newsPage() {
 <div class="sec-hd"><h2 data-en="Upcoming salons">これからの会</h2></div>
 <div id="upcoming"><noscript><p class="empty">会の案内の表示には JavaScript を使います。</p></noscript></div>
 </section>
+<div id="guide"></div>
 <section class="sec2">
 <div class="sec-hd"><h2 data-en="Past salons">開催後の記録</h2></div>
 <div id="records"></div>

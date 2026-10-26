@@ -203,6 +203,21 @@
     }).join('');
   }
 
+  // 会のかたち（日程にかかわらず出す会の説明）
+  function renderGuide() {
+    var el = doc.getElementById('guide');
+    if (!el) return;
+    var g = NEWS.guide;
+    if (!g || !(g.items || []).length || (g.draft && !preview)) { el.innerHTML = ''; return; }
+    el.innerHTML = '<section class="sec2">' +
+      '<div class="sec-hd"><h2>' + esc(pick(g, 'title')) + '</h2>' +
+        (g.draft ? '<span class="draft">' + esc(s('draft')) + '</span>' : '') + '</div>' +
+      '<dl class="dl guide">' + g.items.map(function (it) {
+        return '<dt>' + esc(pick(it, 'label')) + '</dt><dd>' + esc(pick(it, 'text')) + '</dd>';
+      }).join('') + '</dl>' +
+    '</section>';
+  }
+
   function renderRecords() {
     var el = doc.getElementById('records');
     if (!el) return;
@@ -226,6 +241,7 @@
     setCtas();
     renderBand();
     renderUpcoming();
+    renderGuide();
     renderRecords();
   }
 

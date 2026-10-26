@@ -8,23 +8,44 @@
      content: 内容　　form : この会だけ別のフォームにするときの URL（ふだんは ''）
      …En    : 英語表示のときの文面
      draft: true のあいだは公開サイトに出ません（仮の内容。URLの末尾に ?preview=1 を付けると見えます）
+   guide    : 会のかたち（日程にかかわらず出す会の説明）。下の guide のところを参照
    records  : 開催後の記録。新しいものを上に足します。
      { date: '2026/11/14', title: '…', titleEn: '…', text: '…（改行は \n）', textEn: '…' } */
 var NEWS = {
   formUrl: '',
 
-  upcoming: [
-    {
-      date: '2026/11/14', start: '14:00', end: '16:30',
-      area: '東京都内', areaEn: 'Tokyo',
-      place: '東京都内（会場は申込後にお知らせします）',
-      placeEn: 'Tokyo (the venue will be sent to you after you sign up)',
-      content: '持ち寄った作品の朗読と合評',
-      contentEn: 'Reading aloud and discussing the works participants bring',
-      form: '',
-      draft: true
-    }
-  ],
+  upcoming: [],
+
+
+  /* 会のかたち：日程が決まっていなくても、お知らせのページに出す会の説明。
+     items は 見出し(label) と 中身(text) の組。…En は英語表示の文面（空なら日本語のまま出す）
+     draft: true のあいだは公開サイトに出ない（URL の末尾に ?preview=1 を付けると見える） */
+  guide: {
+    title: '会のかたち', titleEn: 'How Our Salons Work',
+    items: [
+      { label: '内容', labelEn: 'Programme',
+        text: '前半は読書会、後半は談話と交流の時間です。',
+        textEn: 'The first half is a reading group, and the second half is time for conversation and getting to know one another.' },
+      { label: '読書会', labelEn: 'Reading group',
+        text: 'ふだんは、参加者がそれぞれ好きな本を持ち寄って紹介し合います。ときどき課題本を決めて、事前にお知らせする回もあります。',
+        textEn: 'Usually, participants each bring a book they love and introduce it to the others. Sometimes we choose a set book and announce it in advance.' },
+      { label: '場所', labelEn: 'Venue',
+        text: '東京都内（会場は申込後にお知らせします）。オンラインでも参加できます。',
+        textEn: 'Tokyo (the venue will be sent to you after you sign up). You can also join online.' },
+      { label: '持ち物', labelEn: 'What to bring',
+        text: '紹介したい本があればお持ちください。紹介をせず、話を聞くだけの参加もできます。',
+        textEn: 'A book you would like to introduce, if you have one. You are also welcome to come just to listen.' },
+      { label: '定員', labelEn: 'Capacity',
+        text: '定めていません。',
+        textEn: 'No limit.' },
+      { label: '参加費', labelEn: 'Fee',
+        text: '検討中です。決まりしだい、ここでお知らせします。',
+        textEn: 'To be decided. We will announce it here.' },
+      { label: '申込', labelEn: 'How to join',
+        text: 'Googleフォームから受け付けます。フォームは準備中です。',
+        textEn: 'Via Google Form. The form is not open yet.' }
+    ]
+  },
 
   records: []
 };
