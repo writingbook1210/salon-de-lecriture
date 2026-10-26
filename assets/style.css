@@ -170,7 +170,7 @@ html[lang="en"] .ja-only{display:none!important}
 .empty{margin:0;padding:24px 0;font-size:14px;line-height:2;letter-spacing:.06em;color:var(--sub)}
 /* これからの会の予定 */
 .guide{margin-top:8px}
-.guide-lead{margin:0 0 16px;font-size:15px;line-height:2;letter-spacing:.06em}
+.guide-h{margin:0 0 14px;font-size:16px;font-weight:500;line-height:1.8;letter-spacing:.12em}
 .guide .dl dd{line-height:2}
 .rec{padding:24px 0;border-bottom:.5px solid var(--rule-l)}
 .rec-d{margin:0;font-size:12px;letter-spacing:.16em;color:var(--sub)}

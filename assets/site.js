@@ -211,7 +211,7 @@
     if (!g || !(g.items || []).length || (g.draft && !preview)) { el.innerHTML = ''; return; }
     el.innerHTML = '<div class="guide">' +
       (g.draft ? '<span class="draft">' + esc(s('draft')) + '</span>' : '') +
-      (pick(g, 'intro') ? '<p class="guide-lead">' + esc(pick(g, 'intro')) + '</p>' : '') +
+      (pick(g, 'title') ? '<h3 class="guide-h">' + esc(pick(g, 'title')) + '</h3>' : '') +
       '<dl class="dl">' + g.items.map(function (it) {
         return '<dt>' + esc(pick(it, 'label')) + '</dt><dd>' + esc(pick(it, 'text')) + '</dd>';
       }).join('') + '</dl>' +

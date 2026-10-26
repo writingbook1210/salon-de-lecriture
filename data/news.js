@@ -18,11 +18,11 @@ var NEWS = {
 
 
   /* これからの会の予定：日程が決まっていなくても、「これからの会」の欄に出す会の進め方。
-     intro は最初の一文、items は 見出し(label) と 中身(text) の組。…En は英語表示の文面（空なら日本語のまま出す）
+     title は小見出し、items は 見出し(label) と 中身(text) の組。…En は英語表示の文面（空なら日本語のまま出す）
      draft: true のあいだは公開サイトに出ない（URL の末尾に ?preview=1 を付けると見える） */
   guide: {
-    intro: 'これからの会は、次のような形で開く予定です。',
-    introEn: 'We plan to hold our upcoming salons as follows.',
+    title: '会のかたち',
+    titleEn: 'How Our Salons Work',
     items: [
       { label: '内容', labelEn: 'Programme',
         text: '前半は読書会、後半は談話と交流の時間です。',
