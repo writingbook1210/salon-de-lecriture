@@ -16,7 +16,7 @@
    name : 筆名（作品の author と同じ書き方にする）　　nameEn : 英語表示のときの名前（確認を取ってから入れる） */
 var WRITERS = [
   { name: '及川 渉', nameEn: 'Wataru Oikawa' },
-  { name: 'たしろだいき', nameEn: 'Daiki Tashiro' }
+  { name: '幾島乃起', nameEn: 'Daiki Ikushima' }
 ];
 
 var WORKS = [
@@ -52,20 +52,20 @@ var WORKS = [
   id: 'photography',
   title: 'The ‘Fluid Nature’ of Photography in the Digital and Social Media Age',
   sub: 'How has Photography Evolved from a ‘Technology for Preservation’ to ‘Content for Consumption’?',
-  author: 'たしろだいき',
+  author: '幾島乃起',
   genre: '評論', date: '2026/10/14', status: '全文公開',   // 原稿の題名をコロンの所で題名と副題に分けた（承認済み）
   lang: 'en',
   titleEn: 'The ‘Fluid Nature’ of Photography in the Digital and Social Media Age',
   subEn: 'How has Photography Evolved from a ‘Technology for Preservation’ to ‘Content for Consumption’?',
-  authorEn: 'Daiki Tashiro',
+  authorEn: 'Daiki Ikushima',
   bodyFile: 'data/bodies/photography.html'
 },
 {
   id: 'boxman',
-  title: 'The Box Man', sub: '', author: 'たしろだいき',
+  title: 'The Box Man', sub: '', author: '幾島乃起',
   genre: '小説', date: '2026/10/14', status: '全文公開',   // 英語の作品なので縦書きにはならない
   lang: 'en',
-  titleEn: 'The Box Man', subEn: '', authorEn: 'Daiki Tashiro',
+  titleEn: 'The Box Man', subEn: '', authorEn: 'Daiki Ikushima',
   bodyFile: 'data/bodies/boxman.html'
 }
 ];
