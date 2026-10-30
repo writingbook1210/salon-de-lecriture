@@ -49,6 +49,13 @@ var WORKS = [
   bodyFile: 'data/bodies/her.html'
 },
 {
+  id: 'edgerunners',
+  title: '復讐心と憎悪は紙一重', sub: '『サイバーパンク：エッジランナーズ2』ユピとDの食い違いから見る、復讐に乗じた暴徒化への変遷', author: '及川 渉',
+  genre: '評論', date: '2026/10/30', status: '全文公開',   // 下書き：題名の分け方・掲載日・英訳は確認待ち
+  titleEn: 'A Thin Line Between Vengeance and Hatred', subEn: 'How Revenge Turned into Mob Violence, Seen Through the Gap Between Yupi and D in Cyberpunk: Edgerunners 2', authorEn: 'Wataru Oikawa',
+  bodyFile: 'data/bodies/edgerunners.html'
+},
+{
   id: 'photography',
   title: 'The ‘Fluid Nature’ of Photography in the Digital and Social Media Age',
   sub: 'How has Photography Evolved from a ‘Technology for Preservation’ to ‘Content for Consumption’?',

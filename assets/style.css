@@ -121,6 +121,11 @@ html[lang="en"] .ja-only{display:none!important}
 .bd figure{margin:0;margin-block:2em 2.2em}
 .bd figure img{display:block;width:100%;max-width:400px;height:auto}
 .bd.v figure img{width:auto;max-width:none;max-height:320px}
+.bd p.sp{margin-block-start:3.3em}
+.bd h2 .hn{margin-inline-end:.6em}
+.bd figure.video{margin-block:1.6em 2.2em}
+.bd .video iframe{display:block;width:100%;height:auto;aspect-ratio:16/9;border:0;background:#f2f2f2}
+.bd.v .video iframe{width:auto;height:18em}
 .bd figcaption{margin-block-start:8px;font-size:12px;line-height:1.6;letter-spacing:.08em;color:var(--sub)}
 .bd sup{font-size:.62em;line-height:0;margin:0 .1em}
 .bd.v sup,.bd.v .tcy{-webkit-text-combine:horizontal;text-combine-upright:all}
