@@ -67,13 +67,23 @@ function bodyHtml(w) {
    日本語の作品の本文に使う。原文の文字は変えず、縦書き用の形を並べておき、CSS でどちらかを見せる。
    ・半角の数字：2桁は縦中横、1桁と3桁以上は全角にして立てる。全角の数字2桁も縦中横
    ・, → 、　( ) → （ ）　? ! → ？ ！　" と “ ” → 〝 〟
-   ・英字を含む語、URL、: / - を含むもの（p43-56 など）は欧文として横に寝かせたまま
+   ・大文字だけの略語（D、RPG、NCPD、SNS、HER など4字まで）は立てる。2字（AI など）は縦中横、1字と3〜4字は全角にして立てる
+   ・「1.」のような番号は縦中横。「CASE.5」のような大文字＋番号は全角にして立てる
+   ・全角の「：」は横に寝かせる（二つの点が横に並ぶ、縦組みのコロンの形にする）
+   ・小文字を含む語、URL、: / - を含むもの（p43-56 など）は欧文として横に寝かせたまま
    ・<a> <sup> と、すでに縦中横にしてある所（class="tcy"）は触らない */
 const toFull = (s) => s.replace(/[0-9]/g, (d) => String.fromCharCode(d.charCodeAt(0) + 0xFEE0));
+const toFullAZ = (s) => s.replace(/[A-Z]/g, (c) => String.fromCharCode(c.charCodeAt(0) + 0xFEE0));
+const vDigits = (d) => (d.length === 2 ? tcy(d) : toFull(d));
 const vAlt = (h, v) => `<span class="t-h">${h}</span><span class="t-v">${v}</span>`;
 const tcy = (d) => `<span class="tcy">${d}</span>`;
 function vAscii(run, st) {
   if (run === '/') return vAlt(run, '／');                       // 日本語の間の / は全角にして立てる
+  if (/^[A-Z]{2}$/.test(run)) return tcy(run);                  // 大文字2字の略語（AI など）は縦中横
+  if (/^(?:[A-Z]|[A-Z]{3,4})$/.test(run)) return vAlt(run, toFullAZ(run));   // 大文字1字・3〜4字は全角にして立てる
+  if (/^[0-9]{1,2}\.$/.test(run)) return tcy(run);              // 「1.」のような番号は縦中横
+  const cs = run.match(/^([A-Z]{1,4})\.([0-9]{1,2})$/);          // CASE.5 など
+  if (cs) return vAlt(run, `${toFullAZ(cs[1])}．${vDigits(cs[2])}`);
   if (/[A-Za-z&;:\/\-]/.test(run)) return run;                  // 欧文・URL・範囲
   if (/\d[,.]\d/.test(run)) return run;                         // 1,000 や 3.5 などはそのまま
   const map = { ',': '、', '(': '（', ')': '）', '?': '？', '!': '！' };
@@ -97,9 +107,10 @@ function verticalize(html) {
       return part;
     }
     if (skipping() || !part) return part;
-    return part.replace(/([!-~]+(?: [!-~]+)*)|([０-９]+)|([“”])/g, (all, ascii, fw, q) => {
+    return part.replace(/([!-~]+(?: [!-~]+)*)|([０-９]+)|([“”])|(：)/g, (all, ascii, fw, q, colon) => {
       if (ascii) return vAscii(ascii, st);
       if (fw) return fw.length === 2 ? tcy(fw) : fw;
+      if (colon) return vAlt(colon, '<span class="sw">：</span>');
       return vAlt(q, q === '“' ? '〝' : '〟');
     });
   }).join('');

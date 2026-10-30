@@ -123,6 +123,7 @@ html[lang="en"] .ja-only{display:none!important}
 .bd.v figure img{width:auto;max-width:none;max-height:320px}
 .bd p.sp{margin-block-start:3.3em}
 .bd h2 .hn{margin-inline-end:.6em}
+.bd.v h2 .hn{margin-inline-end:.3em}
 .bd figure.video{margin-block:1.6em 2.2em}
 .bd .video iframe{display:block;width:100%;height:auto;aspect-ratio:16/9;border:0;background:#f2f2f2}
 .bd.v .video iframe{width:auto;height:18em}
@@ -133,6 +134,7 @@ html[lang="en"] .ja-only{display:none!important}
 .bd .t-v{display:none}
 .bd.v .t-v{display:inline}
 .bd.v .t-h{display:none}
+.bd .sw{text-orientation:sideways}
 .bd .fn{margin:0;margin-block-start:2.4em;padding:0;padding-block-start:16px;padding-inline-start:1.8em;border-block-start:.5px solid var(--rule-l);font-size:12px;line-height:1.9;letter-spacing:.04em;color:var(--sub)}
 .bd .fn li{margin-block-end:.6em;overflow-wrap:anywhere}
 /* 英語で書かれた作品：欧文の書体で組み、段落の字下げと空行は原文どおりにする。幅は日本語の本文と同じ */
