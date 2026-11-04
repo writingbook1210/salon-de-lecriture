@@ -158,8 +158,11 @@
     if (!el) return;
     var ev = upcoming()[0];
     if (!ev) {
-      el.innerHTML = '<h2>' + esc(s('next')) + '</h2><p class="band-p">' + esc(s('tbd')) + '</p>' +
-        '<a class="link" href="' + root + 'news/">' + esc(s('seeNews')) + '</a>';
+      var reg = NEWS.regular && pick(NEWS.regular, 'text');
+      el.innerHTML = '<h2>' + esc(s('next')) + '</h2><p class="band-p">' + esc(reg || s('tbd')) + '</p>' +
+        (reg && NEWS.formUrl
+          ? '<a class="btn" ' + linkAttrs(NEWS.formUrl) + '>' + esc(s('signUp')) + '</a>'
+          : '<a class="link" href="' + root + 'news/">' + esc(s('seeNews')) + '</a>');
       return;
     }
     var f = fmt(ev);
@@ -176,7 +179,7 @@
     if (!el) return;
     var list = upcoming();
     if (!list.length) {
-      el.innerHTML = '<p class="empty">' + esc(s('noUpcoming')) + '</p>';
+      el.innerHTML = guides().length ? '' : '<p class="empty">' + esc(s('noUpcoming')) + '</p>';
       return;
     }
     el.innerHTML = list.map(function (ev) {
@@ -203,21 +206,28 @@
     }).join('');
   }
 
-  // これからの会の予定（日程にかかわらず「これからの会」の欄に出す会の進め方）
+  // 会のかたち（日程にかかわらず「これからの会」の欄に出す会の進め方）。1つでも、いくつか並べても書ける
+  function guides() {
+    var g = NEWS.guide;
+    var list = Array.isArray(g) ? g : (g ? [g] : []);
+    return list.filter(function (b) { return b && (b.items || []).length && (preview || !b.draft); });
+  }
+  function multi(t) { return esc(t).replace(/\n/g, '<br>'); }
   function renderGuide() {
     var el = doc.getElementById('guide');
     if (!el) return;
-    var g = NEWS.guide;
-    if (!g || !(g.items || []).length || (g.draft && !preview)) { el.innerHTML = ''; return; }
-    el.innerHTML = '<div class="guide">' +
-      (g.draft ? '<span class="draft">' + esc(s('draft')) + '</span>' : '') +
-      (pick(g, 'title') ? '<h3 class="guide-h">' + esc(pick(g, 'title')) + '</h3>' : '') +
-      '<dl class="dl">' + g.items.map(function (it) {
-        var form = it.link ? (it.url || NEWS.formUrl || '') : '';
-        return '<dt>' + esc(pick(it, 'label')) + '</dt><dd>' + esc(pick(it, 'text')) +
-          (form ? '<br><a class="link" ' + linkAttrs(form) + '>' + esc(pick(it, 'link')) + '　→</a>' : '') + '</dd>';
-      }).join('') + '</dl>' +
-    '</div>';
+    el.innerHTML = guides().map(function (g) {
+      return '<div class="guide">' +
+        (g.draft ? '<span class="draft">' + esc(s('draft')) + '</span>' : '') +
+        (pick(g, 'title') ? '<h3 class="guide-h">' + esc(pick(g, 'title')) + '</h3>' : '') +
+        (pick(g, 'lead') ? '<p class="guide-lead">' + multi(pick(g, 'lead')) + '</p>' : '') +
+        '<dl class="dl">' + g.items.map(function (it) {
+          var form = it.link ? (it.url || NEWS.formUrl || '') : '';
+          return '<dt>' + esc(pick(it, 'label')) + '</dt><dd>' + multi(pick(it, 'text')) +
+            (form ? '<br><a class="link" ' + linkAttrs(form) + '>' + esc(pick(it, 'link')) + '　→</a>' : '') + '</dd>';
+        }).join('') + '</dl>' +
+      '</div>';
+    }).join('');
   }
 
   function renderRecords() {
