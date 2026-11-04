@@ -210,22 +210,24 @@
   function guides() {
     var g = NEWS.guide;
     var list = Array.isArray(g) ? g : (g ? [g] : []);
-    return list.filter(function (b) { return b && (b.items || []).length && (preview || !b.draft); });
+    return list.filter(function (b) { return b && ((b.items || []).length || b.lead || b.link) && (preview || !b.draft); });
   }
   function multi(t) { return esc(t).replace(/\n/g, '<br>'); }
   function renderGuide() {
     var el = doc.getElementById('guide');
     if (!el) return;
     el.innerHTML = guides().map(function (g) {
-      return '<div class="guide">' +
+      var form = g.link ? (g.url || NEWS.formUrl || '') : '';
+      return '<div class="guide' + (g.join ? ' guide-join' : '') + '">' +
         (g.draft ? '<span class="draft">' + esc(s('draft')) + '</span>' : '') +
         (pick(g, 'title') ? '<h3 class="guide-h">' + esc(pick(g, 'title')) + '</h3>' : '') +
         (pick(g, 'lead') ? '<p class="guide-lead">' + multi(pick(g, 'lead')) + '</p>' : '') +
-        '<dl class="dl">' + g.items.map(function (it) {
+        (form ? '<a class="btn" ' + linkAttrs(form) + '>' + esc(pick(g, 'link')) + '</a>' : '') +
+        ((g.items || []).length ? '<dl class="dl">' + g.items.map(function (it) {
           var form = it.link ? (it.url || NEWS.formUrl || '') : '';
           return '<dt>' + esc(pick(it, 'label')) + '</dt><dd>' + multi(pick(it, 'text')) +
             (form ? '<br><a class="link" ' + linkAttrs(form) + '>' + esc(pick(it, 'link')) + '　→</a>' : '') + '</dd>';
-        }).join('') + '</dl>' +
+        }).join('') + '</dl>' : '') +
       '</div>';
     }).join('');
   }

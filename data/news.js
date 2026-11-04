@@ -22,7 +22,7 @@ var NEWS = {
 
   /* 会のかたち：日程にかかわらず「これからの会」の欄に出す会の進め方。上から順に並べる。
      title は小見出し、lead は小見出しの下の一文、items は 見出し(label) と 中身(text) の組（text の \n は改行）。
-     link を書くと、その項目の下に申込ページ（formUrl）へのリンクを出す。…En は英語表示の文面（空なら日本語のまま出す）
+     link を書くと、その項目の下に申込ページ（formUrl）へのリンクを出す。ブロックに link を書くと申込ボタンになる（join: true で区切り線つきの独立した欄にする）。…En は英語表示の文面（空なら日本語のまま出す）
      draft: true のあいだは公開サイトに出ない（URL の末尾に ?preview=1 を付けると見える） */
   guide: [
     {
@@ -73,12 +73,10 @@ var NEWS = {
       ]
     },
     {
-      items: [
-        { label: '申込', labelEn: 'How to join',
-          text: 'Peatix の申込ページから受け付けています。',
-          textEn: 'Sign-ups are taken on our Peatix page.',
-          link: 'Peatix の申込ページを開く', linkEn: 'Open our Peatix page' }
-      ]
+      title: '申込', titleEn: 'How to join', join: true,
+      lead: 'Peatix の申込ページから受け付けています。',
+      leadEn: 'Sign-ups are taken on our Peatix page.',
+      link: 'Peatix の申込ページを開く', linkEn: 'Open our Peatix page'
     }
   ],
 

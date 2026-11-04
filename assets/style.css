@@ -178,6 +178,8 @@ html[lang="en"] .ja-only{display:none!important}
 /* これからの会の予定 */
 .guide{margin-top:8px}
 .guide+.guide{margin-top:40px}
+.guide-join{margin-top:56px!important;padding-top:28px;border-top:1px solid var(--ink)}
+.guide-join .guide-lead{margin-bottom:20px}
 .guide-lead{margin:0 0 16px;font-size:14px;line-height:2;letter-spacing:.06em}
 .guide-h{margin:0 0 14px;font-size:16px;font-weight:500;line-height:1.8;letter-spacing:.12em}
 .guide .dl dd{line-height:2}
