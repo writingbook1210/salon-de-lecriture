@@ -31,8 +31,8 @@ var NEWS = {
       leadEn: 'Sunday sessions for writing in silence. Do bring a manuscript you are working on.',
       items: [
         { label: '内容', labelEn: 'Programme',
-          text: '集まってそれぞれが自分の原稿を黙って書く会です。原稿を見せ合ったり、批評したりする時間はありません。同じ机で同じ時間、自分の文章と向き合います。\n小説・評論・エッセイ、日本語・英語、どんな原稿でも構いません。これから書き始める方も歓迎です。海外では「Shut Up & Write!」などの名前で広まっている形式です。参加者が少ない日も、人数にかかわらず開いています。',
-          textEn: 'Everyone gathers and writes their own manuscript in silence. There is no time for showing work to one another or critiquing it. At the same table, for the same stretch of time, each of us faces our own writing.\nAny manuscript is welcome: fiction, criticism, or essays, in Japanese or English. If you are only about to start writing, you are welcome too. The format has spread overseas under names such as “Shut Up & Write!”. We hold the session however few people come.' },
+          text: '集まってそれぞれが自分の原稿を黙って書く会です。原稿を見せ合ったり、批評したりする時間はありません。同じ机で同じ時間、自分の文章と向き合います。\n小説・評論・エッセイ、日本語・英語、どんな原稿でも構いません。これから書き始める方も歓迎です。参加者が少ない日も、人数にかかわらず開いています。',
+          textEn: 'Everyone gathers and writes their own manuscript in silence. There is no time for showing work to one another or critiquing it. At the same table, for the same stretch of time, each of us faces our own writing.\nAny manuscript is welcome: fiction, criticism, or essays, in Japanese or English. If you are only about to start writing, you are welcome too. We hold the session however few people come.' },
         { label: '当日の流れ', labelEn: 'On the day',
           text: '「黙って書く」。本当にこれだけです。黙って自分の文章に向き合う時間にしてください。\nその後、雑談（任意です。そのまま帰っても大丈夫です）。\n休憩時間は話しかけ歓迎です。テーブルに置いた「Salon de l’écriture」の札が目印です。',
           textEn: '“Write in silence.” That really is all. Make it a time to face your own writing without speaking.\nAfterwards, there is time to chat (optional; you are welcome to leave straight away).\nFeel free to talk to us during breaks. Look for the “Salon de l’écriture” card on our table.' },
