@@ -37,16 +37,16 @@
       tbd: '次回の日程は準備中です。',
       noUpcoming: '次回の会は準備中です。決まりしだい、ここでお知らせします。',
       noRecords: 'まだ記録はありません。会のあと、ここに記録を載せます。',
-      place: '場所', content: '内容', join: '申込', viaForm: 'Googleフォームから',
-      formSoon: '申込フォームは準備中です。', draft: '仮の内容'
+      place: '場所', content: '内容', join: '申込', viaForm: 'Peatix の申込ページから',
+      formSoon: '申込ページは準備中です。', draft: '仮の内容'
     },
     en: {
       next: 'Next salon', signUp: 'Sign up', signUpThis: 'Sign up for this salon', seeNews: 'See news →',
       tbd: 'The next date is being planned.',
       noUpcoming: 'The next salon is being planned. It will be announced here.',
       noRecords: 'No records yet. Notes from each salon will be posted here afterwards.',
-      place: 'Venue', content: 'Programme', join: 'How to join', viaForm: 'Via Google Form',
-      formSoon: 'The sign-up form is not open yet.', draft: 'Draft'
+      place: 'Venue', content: 'Programme', join: 'How to join', viaForm: 'On our Peatix page',
+      formSoon: 'The sign-up page is not open yet.', draft: 'Draft'
     }
   };
   function s(k) { return S[lang][k]; }

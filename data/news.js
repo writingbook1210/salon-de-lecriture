@@ -1,6 +1,6 @@
 /* お知らせのデータです。書き換えたら node tools/build.mjs を実行してください（版番号が上がります）。
 
-   formUrl  : 会の申込フォーム（Googleフォーム）の URL。決まったら '' の中に入れます。
+   formUrl  : 会の申込ページ（Peatix）の URL。決まったら '' の中に入れます。
               入れると、どのページの「次回の会に申し込む」もこのフォームにつながります。
    upcoming : これからの会。開催日を過ぎると自動で表示されなくなります。
      date 'YYYY/M/D'、start / end '14:00' の形
@@ -12,7 +12,7 @@
    records  : 開催後の記録。新しいものを上に足します。
      { date: '2026/11/14', title: '…', titleEn: '…', text: '…（改行は \n）', textEn: '…' } */
 var NEWS = {
-  formUrl: 'https://forms.gle/uAgr2wAodHfwX4LC8',
+  formUrl: 'https://salon-de-lecriture.peatix.com',
 
   upcoming: [],
 
@@ -40,9 +40,9 @@ var NEWS = {
         text: '紹介したい本や作品を持ってくる方は無料、それ以外の方は500円です。',
         textEn: 'Free if you bring a book or work to introduce; ¥500 otherwise.' },
       { label: '申込', labelEn: 'How to join',
-        text: 'Googleフォームから受け付けています。日程が決まったら、あらためてご案内します。',
-        textEn: 'Sign-ups are taken through a Google Form. We will contact you again once the date is set.',
-        link: 'Googleフォームを開く', linkEn: 'Open the Google Form' }
+        text: 'Peatix の申込ページから受け付けています。',
+        textEn: 'Sign-ups are taken on our Peatix page.',
+        link: 'Peatix の申込ページを開く', linkEn: 'Open our Peatix page' }
     ]
   },
 
