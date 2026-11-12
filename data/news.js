@@ -63,9 +63,7 @@ var NEWS = {
           ] },
         { title: 'こんな方におすすめです', titleEn: 'Who it is for',
           text: 'ひとりだとなかなか書き始められない方\n書きかけの原稿を少しでも先へ進めたい方\n「書く人」がいる場所に身を置いてみたい方',
-          textEn: 'People who find it hard to start writing on their own\nPeople who want to move a work in progress forward, even a little\nPeople who would like to spend time where “writers” are',
-          note: 'ひとりでも絶対にいます。\n何が何でもいます。\n雨だろうが吹雪だろうが、\v嵐だろうがなんだっています。\nいつだって私は書いているし、\v誰かだって書いているのだから。',
-          noteEn: 'Even if it is just me, I will be there.\nI will be there no matter what.\nRain, snowstorm, or gale, I will be there.\nI am always writing, and someone else is writing too.' }
+          textEn: 'People who find it hard to start writing on their own\nPeople who want to move a work in progress forward, even a little\nPeople who would like to spend time where “writers” are' }
       ]
     },
     {
