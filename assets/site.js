@@ -216,7 +216,12 @@
       return b && ((b.items || []).length || (b.parts || []).length || b.intro || b.lead || b.link) && (preview || !b.draft);
     });
   }
-  function multi(t) { return esc(t).replace(/\n/g, '<br>'); }
+  // 改行（\n）、スマホ幅だけの改行（\v）、「──」を一本の線に、時刻の範囲は途中で折り返さない
+  function multi(t) {
+    return esc(t).replace(/\v/g, '<br class="sp-br">').replace(/\n/g, '<br>')
+      .replace(/─{2,}/g, function (d) { return '<span class="dash">' + d + '</span>'; })
+      .replace(/\d{1,2}:\d{2}[～〜–-]\d{1,2}:\d{2}/g, function (x) { return '<span class="nw">' + x + '</span>'; });
+  }
   function paras(t, cls) {
     return String(t || '').split(/\n{2,}/).map(function (x) { return '<p class="' + cls + '">' + multi(x) + '</p>'; }).join('');
   }
