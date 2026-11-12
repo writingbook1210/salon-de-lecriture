@@ -38,7 +38,8 @@
       noUpcoming: '次回の会は準備中です。決まりしだい、ここでお知らせします。',
       noRecords: 'まだ記録はありません。会のあと、ここに記録を載せます。',
       place: '場所', content: '内容', join: '申込', viaForm: 'Peatix の申込ページから',
-      formSoon: '申込ページは準備中です。', draft: '仮の内容'
+      formSoon: '申込ページは準備中です。', draft: '仮の内容',
+      past: '開催後の記録', back: '目次へ戻る　↑'
     },
     en: {
       next: 'Next salon', signUp: 'Sign up', signUpThis: 'Sign up for this salon', seeNews: 'See news →',
@@ -46,7 +47,8 @@
       noUpcoming: 'The next salon is being planned. It will be announced here.',
       noRecords: 'No records yet. Notes from each salon will be posted here afterwards.',
       place: 'Venue', content: 'Programme', join: 'How to join', viaForm: 'On our Peatix page',
-      formSoon: 'The sign-up page is not open yet.', draft: 'Draft'
+      formSoon: 'The sign-up page is not open yet.', draft: 'Draft',
+      past: 'Past salons', back: 'Back to contents ↑'
     }
   };
   function s(k) { return S[lang][k]; }
@@ -218,7 +220,7 @@
     if (!el) return;
     el.innerHTML = guides().map(function (g) {
       var form = g.link ? (g.url || NEWS.formUrl || '') : '';
-      return '<div class="guide' + (g.join ? ' guide-join' : '') + '">' +
+      return '<div class="guide' + (g.join ? ' guide-join' : '') + '"' + (g.id ? ' id="' + esc(g.id) + '"' : '') + '>' +
         (g.draft ? '<span class="draft">' + esc(s('draft')) + '</span>' : '') +
         (pick(g, 'title') ? '<h3 class="guide-h">' + esc(pick(g, 'title')) + '</h3>' : '') +
         (pick(g, 'lead') ? '<p class="guide-lead">' + multi(pick(g, 'lead')) + '</p>' : '') +
@@ -228,6 +230,7 @@
           return '<dt>' + esc(pick(it, 'label')) + '</dt><dd>' + multi(pick(it, 'text')) +
             (form ? '<br><a class="link" ' + linkAttrs(form) + '>' + esc(pick(it, 'link')) + '　→</a>' : '') + '</dd>';
         }).join('') + '</dl>' : '') +
+        (g.id && !g.join && pick(g, 'title') ? '<p class="toc-back"><a href="#toc" data-to="toc">' + esc(s('back')) + '</a></p>' : '') +
       '</div>';
     }).join('');
   }
@@ -251,11 +254,103 @@
     }).join('');
   }
 
+  // 「これからの会」の下の目次。id のある会と「開催後の記録」を並べ、押すと矢印が見出しの横まで一緒に移る
+  function tocItems() {
+    var items = guides().filter(function (g) { return g.id && pick(g, 'title'); })
+      .map(function (g) { return { id: g.id, label: pick(g, 'title') }; });
+    if (items.length && doc.getElementById('past')) items.push({ id: 'past', label: s('past') });
+    return items;
+  }
+  function renderToc() {
+    var el = doc.getElementById('toc');
+    if (!el) return;
+    var items = tocItems();
+    el.hidden = !items.length;
+    el.innerHTML = items.length ? '<ul>' + items.map(function (it) {
+      return '<li><a href="#' + esc(it.id) + '" data-to="' + esc(it.id) + '">' +
+        '<span class="toc-t">' + esc(it.label) + '</span><span class="toc-a" aria-hidden="true">→</span></a></li>';
+    }).join('') + '</ul>' : '';
+  }
+  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var moving = 0;
+  function headOf(id) {
+    var t = doc.getElementById(id);
+    if (!t || id === 'toc') return t;
+    return t.querySelector('.guide-h, .sec-hd h2') || t;
+  }
+  function go(id, arrow, instant) {
+    var target = doc.getElementById(id);
+    if (!target) return;
+    var head = headOf(id);
+    // 前のしおり（見出しの横の矢印）を外して、行き先の見出しに付け直す
+    each('.toc-mark', function (m) { m.parentNode.removeChild(m); });
+    var mark = null;
+    if (id !== 'toc' && head) {
+      mark = doc.createElement('span');
+      mark.className = 'toc-mark';
+      mark.setAttribute('aria-hidden', 'true');
+      mark.textContent = '→';
+      head.insertBefore(mark, head.firstChild);
+    }
+    if (window.history && history.replaceState) history.replaceState(null, '', '#' + id);
+    var startY = window.pageYOffset;
+    var maxY = Math.max(0, doc.documentElement.scrollHeight - window.innerHeight);
+    var endY = Math.min(maxY, Math.max(0, target.getBoundingClientRect().top + startY - 24));
+    var done = function () {
+      if (!head) return;
+      if (!head.hasAttribute('tabindex')) head.setAttribute('tabindex', '-1');
+      try { head.focus({ preventScroll: true }); } catch (e) { /* 古いブラウザでは何もしない */ }
+    };
+    if (calm || instant) { window.scrollTo(0, endY); done(); return; }
+    var fly = null, from = null;
+    if (arrow && mark) {
+      from = arrow.getBoundingClientRect();
+      fly = doc.createElement('span');
+      fly.className = 'toc-fly';
+      fly.setAttribute('aria-hidden', 'true');
+      fly.textContent = '→';
+      body.appendChild(fly);
+      mark.style.visibility = 'hidden';
+    }
+    var run = ++moving, t0 = null, D = 500;
+    var ease = function (x) { return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+    var step = function (now) {
+      if (run !== moving) { if (fly && fly.parentNode) fly.parentNode.removeChild(fly); return; }
+      if (t0 === null) t0 = now;
+      var p = Math.min(1, (now - t0) / D), e = ease(p);
+      window.scrollTo(0, startY + (endY - startY) * e);
+      if (fly) {
+        var to = mark.getBoundingClientRect();
+        fly.style.transform = 'translate(' + (from.left + (to.left - from.left) * e) + 'px,' +
+          (from.top + (to.top - from.top) * e) + 'px)';
+      }
+      if (p < 1) { window.requestAnimationFrame(step); return; }
+      if (fly && fly.parentNode) fly.parentNode.removeChild(fly);
+      if (mark) mark.style.visibility = '';
+      done();
+    };
+    window.requestAnimationFrame(step);
+  }
+  doc.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[data-to]') : null;
+    if (!a || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    e.preventDefault();
+    go(a.getAttribute('data-to'), a.querySelector('.toc-a'));
+  });
+  // スマホ：指が触れた瞬間に、PC でカーソルを乗せたときと同じ変化を出す
+  doc.addEventListener('touchstart', function (e) {
+    var a = e.target.closest ? e.target.closest('.toc a') : null;
+    if (!a) return;
+    a.classList.add('is-touch');
+    window.setTimeout(function () { a.classList.remove('is-touch'); }, 600);
+  }, { passive: true });
+
   function renderNews() {
     setCtas();
     renderBand();
     renderUpcoming();
     renderGuide();
+    renderToc();
     renderRecords();
   }
 
@@ -327,6 +422,11 @@
 
   applyLang();
   renderNews();
+  // アドレスに #writing などが付いて開かれたら、その会の見出しへ（中身を書き出したあとで移る）
+  if (doc.getElementById('toc') && location.hash.length > 1) {
+    var first = decodeURIComponent(location.hash.slice(1));
+    if (doc.getElementById(first)) go(first, null, true);
+  }
   initWorks();
   initReader();
 })();

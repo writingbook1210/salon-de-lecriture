@@ -23,10 +23,11 @@ var NEWS = {
   /* 会のかたち：日程にかかわらず「これからの会」の欄に出す会の進め方。上から順に並べる。
      title は小見出し、lead は小見出しの下の一文、items は 見出し(label) と 中身(text) の組（text の \n は改行）。
      link を書くと、その項目の下に申込ページ（formUrl）へのリンクを出す。ブロックに link を書くと申込ボタンになる（join: true で区切り線つきの独立した欄にする）。…En は英語表示の文面（空なら日本語のまま出す）
+     id を書いたブロックは「これからの会」の下の目次に出る（題名が目次の項目名になる。いちばん下に「開催後の記録」が自動で加わる）。
      draft: true のあいだは公開サイトに出ない（URL の末尾に ?preview=1 を付けると見える） */
   guide: [
     {
-      title: '執筆会', titleEn: 'Writing Sessions',
+      id: 'writing', title: '執筆会', titleEn: 'Writing Sessions',
       lead: '日曜の黙って書く会。ぜひ、書きかけの原稿を持ってきてください。',
       leadEn: 'Sunday sessions for writing in silence. Do bring a manuscript you are working on.',
       items: [
@@ -54,7 +55,7 @@ var NEWS = {
       ]
     },
     {
-      title: '読書会', titleEn: 'Reading Group',
+      id: 'reading', title: '読書会', titleEn: 'Reading Group',
       lead: '月に一度、第3日曜は執筆会をお休みして、読書会を開いています。',
       leadEn: 'Once a month, on the third Sunday, we hold a reading group in place of the writing session.',
       items: [
@@ -73,7 +74,7 @@ var NEWS = {
       ]
     },
     {
-      title: '申込', titleEn: 'How to join', join: true,
+      id: 'join', title: '申込', titleEn: 'How to join', join: true,
       lead: 'Peatix の申込ページから受け付けています。',
       leadEn: 'Sign-ups are taken on our Peatix page.',
       link: 'Peatix の申込ページを開く', linkEn: 'Open our Peatix page'

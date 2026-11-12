@@ -177,7 +177,7 @@ function head({ root, title, desc, url, image, type = 'website', jsonld, zh = ''
 <link rel="apple-touch-icon" href="${root}images/icon-180.png?v=${ver}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Shippori+Mincho:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Shippori+Mincho:wght@400;500;600&amp;display=swap">
 ${zh ? `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&amp;text=${encodeURIComponent(zh)}&amp;display=swap">\n` : ''}<link rel="stylesheet" href="${root}assets/style.css?v=${ver}">
 ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>\n` : ''}</head>`;
 }
@@ -362,10 +362,11 @@ function newsPage() {
   const main = `<h1 class="h1" data-en="News">お知らせ</h1>
 <section>
 <div class="sec-hd"><h2 data-en="Upcoming salons">これからの会</h2></div>
+<nav class="toc" id="toc" aria-label="これからの会の目次" data-ja-label="これからの会の目次" data-en-label="Contents" hidden></nav>
 <div id="upcoming"><noscript><p class="empty">会の案内の表示には JavaScript を使います。</p></noscript></div>
 </section>
 <div id="guide"></div>
-<section class="sec2">
+<section class="sec2" id="past">
 <div class="sec-hd"><h2 data-en="Past salons">開催後の記録</h2></div>
 <div id="records"></div>
 </section>`;

@@ -80,7 +80,7 @@ def main():
     httpd = serve(tmp)
     origin = f'http://127.0.0.1:{PORT}'
     font_css = ''.join(f'@import url({origin}/_fonts/{f});' for f in [
-        'shippori-mincho/400.css', 'shippori-mincho/500.css', 'cormorant-garamond/400.css',
+        'shippori-mincho/400.css', 'shippori-mincho/500.css', 'shippori-mincho/600.css', 'cormorant-garamond/400.css',
         'cormorant-garamond/500.css', 'cormorant-garamond/600.css', 'cormorant-garamond/400-italic.css'])
     problems, report = [], []
     shot_dir = CACHE / 'shots'
