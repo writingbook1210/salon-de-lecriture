@@ -56,6 +56,22 @@ var WORKS = [
   bodyFile: 'data/bodies/edgerunners.html'
 },
 {
+  id: 'anger',
+  title: 'Anger', sub: '', author: '幾島乃起',
+  genre: 'エッセイ', date: '2026/10/14', status: '全文公開',   // 保留：書き手が書き直し中（Translated by me and Deepl は外すよう依頼あり）
+  lang: 'en',
+  titleEn: 'Anger', subEn: '', authorEn: 'Daiki Ikushima',
+  bodyFile: 'data/bodies/anger.html'
+},
+{
+  id: 'dreams',
+  title: 'Story of Dreams (letter form)', sub: '', author: '幾島乃起',
+  genre: 'エッセイ', date: '2026/10/14', status: '全文公開',   // 保留：題名の形が未定（原稿の本文に題名がなく、ファイル名から仮に取った）
+  lang: 'en',
+  titleEn: 'Story of Dreams (letter form)', subEn: '', authorEn: 'Daiki Ikushima',
+  bodyFile: 'data/bodies/dreams.html'
+},
+{
   id: 'photography',
   title: 'The ‘Fluid Nature’ of Photography in the Digital and Social Media Age',
   sub: 'How has Photography Evolved from a ‘Technology for Preservation’ to ‘Content for Consumption’?',
