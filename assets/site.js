@@ -212,9 +212,23 @@
   function guides() {
     var g = NEWS.guide;
     var list = Array.isArray(g) ? g : (g ? [g] : []);
-    return list.filter(function (b) { return b && ((b.items || []).length || b.lead || b.link) && (preview || !b.draft); });
+    return list.filter(function (b) {
+      return b && ((b.items || []).length || (b.parts || []).length || b.intro || b.lead || b.link) && (preview || !b.draft);
+    });
   }
   function multi(t) { return esc(t).replace(/\n/g, '<br>'); }
+  function paras(t, cls) {
+    return String(t || '').split(/\n{2,}/).map(function (x) { return '<p class="' + cls + '">' + multi(x) + '</p>'; }).join('');
+  }
+  function guideDl(items) {
+    return '<dl class="dl">' + items.map(function (it) {
+      var form = it.link ? (it.url || NEWS.formUrl || '') : '';
+      return '<dt>' + esc(pick(it, 'label')) + '</dt><dd>' + multi(pick(it, 'text')) +
+        (it.href ? '<br><a class="link" ' + linkAttrs(it.href) + '>' + esc(pick(it, 'hrefText') || it.href) + '　↗</a>' : '') +
+        (pick(it, 'after') ? '<br>' + multi(pick(it, 'after')) : '') +
+        (form ? '<br><a class="link" ' + linkAttrs(form) + '>' + esc(pick(it, 'link')) + '　→</a>' : '') + '</dd>';
+    }).join('') + '</dl>';
+  }
   function renderGuide() {
     var el = doc.getElementById('guide');
     if (!el) return;
@@ -223,13 +237,19 @@
       return '<div class="guide' + (g.join ? ' guide-join' : '') + '"' + (g.id ? ' id="' + esc(g.id) + '"' : '') + '>' +
         (g.draft ? '<span class="draft">' + esc(s('draft')) + '</span>' : '') +
         (pick(g, 'title') ? '<h3 class="guide-h">' + esc(pick(g, 'title')) + '</h3>' : '') +
+        (pick(g, 'catch') ? '<p class="guide-catch">' + multi(pick(g, 'catch')) + '</p>' : '') +
+        (pick(g, 'intro') ? '<div class="guide-intro">' + paras(pick(g, 'intro'), 'guide-p') + '</div>' : '') +
         (pick(g, 'lead') ? '<p class="guide-lead">' + multi(pick(g, 'lead')) + '</p>' : '') +
         (form ? '<a class="btn" ' + linkAttrs(form) + '>' + esc(pick(g, 'link')) + '</a>' : '') +
-        ((g.items || []).length ? '<dl class="dl">' + g.items.map(function (it) {
-          var form = it.link ? (it.url || NEWS.formUrl || '') : '';
-          return '<dt>' + esc(pick(it, 'label')) + '</dt><dd>' + multi(pick(it, 'text')) +
-            (form ? '<br><a class="link" ' + linkAttrs(form) + '>' + esc(pick(it, 'link')) + '　→</a>' : '') + '</dd>';
-        }).join('') + '</dl>' : '') +
+        ((g.items || []).length ? guideDl(g.items) : '') +
+        (g.parts || []).map(function (pt) {
+          return '<div class="guide-part">' +
+            (pick(pt, 'title') ? '<h4 class="guide-sh">' + esc(pick(pt, 'title')) + '</h4>' : '') +
+            ((pt.items || []).length ? guideDl(pt.items) : '') +
+            (pick(pt, 'text') ? '<p class="guide-list">' + multi(pick(pt, 'text')) + '</p>' : '') +
+            (pick(pt, 'note') ? '<p class="guide-note">' + multi(pick(pt, 'note')) + '</p>' : '') +
+          '</div>';
+        }).join('') +
         (g.id && !g.join && pick(g, 'title') ? '<p class="toc-back"><a href="#toc" data-to="toc">' + esc(s('back')) + '</a></p>' : '') +
       '</div>';
     }).join('');

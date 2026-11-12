@@ -183,6 +183,13 @@ html[lang="en"] .ja-only{display:none!important}
 .guide-lead{margin:0 0 16px;font-size:14px;line-height:2;letter-spacing:.06em}
 .guide-h{margin:0 0 14px;font-size:16px;font-weight:500;line-height:1.8;letter-spacing:.12em}
 .guide .dl dd{line-height:2}
+.guide-catch{margin:0 0 22px;font-size:15px;line-height:1.9;letter-spacing:.1em}
+.guide-intro{margin:0 0 8px}
+.guide-p{margin:0 0 14px;font-size:15px;line-height:2;letter-spacing:.06em}
+.guide-part{margin-top:30px}
+.guide-sh{margin:0 0 6px;font-size:13px;font-weight:500;letter-spacing:.2em;color:var(--sub)}
+.guide-list{margin:0;padding:12px 0;border-top:.5px solid var(--rule-l);border-bottom:.5px solid var(--rule-l);font-size:15px;line-height:2;letter-spacing:.06em}
+.guide-note{margin:18px 0 0;font-size:15px;line-height:2.1;letter-spacing:.08em}
 /* 「これからの会」の目次（押すと矢印が見出しの横まで一緒に移る） */
 .toc{margin:4px 0 36px}
 .toc ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:0 32px}
@@ -207,6 +214,8 @@ html[lang="en"] .toc a{letter-spacing:.05em}
 @media (max-width:640px){
   .guide-h{font-size:18px}
   .guide-lead{font-size:15px;line-height:2.1}
+  .guide-catch{font-size:16px}
+  .guide-p,.guide-list,.guide-note{font-size:16px;line-height:2.05}
   .guide .dl{grid-template-columns:minmax(0,1fr);font-size:16px}
   .guide .dl dt{padding:18px 0 2px;white-space:normal;font-size:13px}
   .guide .dl dd{border-top:0;padding:0 0 16px;line-height:2.05}
